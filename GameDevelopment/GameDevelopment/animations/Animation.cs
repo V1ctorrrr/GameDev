@@ -12,6 +12,7 @@ namespace GameDevelopment.animations
         public AnimationFrame CurrentFrame { get; set; }
         private List<AnimationFrame> frames;
         public int counter;
+        public int fps = 20;
         private double secondCounter = 0;
 
         public Animation()
@@ -31,8 +32,7 @@ namespace GameDevelopment.animations
             CurrentFrame = frames[counter];
 
             secondCounter += gameTime.ElapsedGameTime.TotalSeconds;
-            int fps = 20;
-
+            
             if (secondCounter >= 1d / fps)
             {
                 counter++;

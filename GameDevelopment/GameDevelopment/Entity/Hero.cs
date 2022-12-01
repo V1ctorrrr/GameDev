@@ -20,7 +20,6 @@ namespace GameDevelopment.Entity
         //First texture = idle, then run, then jump, then fall,then crouch, then crouch walk, then attack, then crouch attack
         public List<Texture2D> textures;
         private List<Animation> animations = new List<Animation>();
-        private int scale = 2;
         public int textureCounter { get; set; } = 0;
         public SpriteEffects spriteEffect { get; set; }
         public bool IsAttacking { get; set; } = false;
@@ -30,14 +29,16 @@ namespace GameDevelopment.Entity
         public Vector2 Position { get; set; }
         public Vector2 Speed { get; set; }
         public int jump = 0;
-        private int maxJump = 38;
+        private int maxJump = 35;
         private int jumpHeight;
-        public float Gravity { get; set; } = 15f;
         public KeyboardReader keyboardReader { get; set; }
         private MovementManager movementManager = new MovementManager();
         public List<Block> Hitboxes { get; set; }
         private Texture2D HitboxTexture{ get; set; }
         private Vector2 HitBoxPosition { get; set; }
+        public int Health { get; set; } = 15;
+        public int Damage { get; set; } = 5;
+        public bool IsAlive { get; set; } = true;
 
         #endregion
         public Hero(List<Texture2D> textures, KeyboardReader keyboard, List<Block> hitboxes, Texture2D hitboxTexture)
@@ -58,7 +59,7 @@ namespace GameDevelopment.Entity
             keyboardReader = keyboard;
             Position = new Vector2(0,0);
             HitBoxPosition = (new Vector2(82, 82));
-            Speed = new Vector2(2 * scale, 0);
+            Speed = new Vector2(4, 0);
             Hitboxes = hitboxes;
             this.HitboxTexture = hitboxTexture;
             jumpHeight = 10;
@@ -66,12 +67,12 @@ namespace GameDevelopment.Entity
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
+            spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), 2, spriteEffect, 0f);
             spriteBatch.Draw(HitboxTexture,Position + HitBoxPosition,Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
         }
         public void Update(GameTime gameTime)
         {
-            jumpHeight = maxJump - jump - (int)Gravity;
+            jumpHeight = maxJump - jump - (int)Information.Gravity;
             Jump();
             Attack();
             Move();
@@ -79,7 +80,7 @@ namespace GameDevelopment.Entity
             animations[textureCounter].Update(gameTime);
         }
 
-        private void Move()
+        public void Move()
         {
             movementManager.Move(this);
             
@@ -179,38 +180,38 @@ namespace GameDevelopment.Entity
 
             if (!IsOnGround && !IsJumping)
             {
-                Position += new Vector2(0, Gravity);
+                Position += new Vector2(0, Information.Gravity);
             }
 
             IsOnGround = false;
         }
         private void Attack()
         {
-                if (keyboardReader.Attacked && !IsCrouching)
-                {
-                    textureCounter = 6;
-                    IsAttacking = true;
-                    if (animations[textureCounter].counter > 4)
-                    {
-                        IsAttacking = false;
-                        animations[textureCounter].counter = 0;
-                    }
-                }
-                else if (keyboardReader.Attacked && IsCrouching)
-                {
-                    textureCounter = 7;
-                    IsAttacking = true;
-                    if (animations[textureCounter].counter > 4)
-                    {
-                        IsAttacking = false;
-                        animations[textureCounter].counter = 0;
-                    }
-                }
-                else
+                
+            if (keyboardReader.Attacked && !IsCrouching)
+            {
+                textureCounter = 6;
+                IsAttacking = true;
+                if (animations[textureCounter].counter > 4)
                 {
                     IsAttacking = false;
+                    animations[textureCounter].counter = 0;
                 }
-            
+            }
+            else if (keyboardReader.Attacked && IsCrouching)
+            {
+                textureCounter = 7;
+                IsAttacking = true;
+                if (animations[textureCounter].counter > 4)
+                {
+                    IsAttacking = false;
+                    animations[textureCounter].counter = 0;
+                }
+            }
+            else
+            {
+                IsAttacking = false;
+            }
         }
 
         private void Jump()
@@ -227,7 +228,7 @@ namespace GameDevelopment.Entity
             }
             if (!IsJumping) return;
 
-            if (jumpHeight<jump-Gravity)
+            if (jumpHeight<jump-Information.Gravity)
             {
                 textureCounter = 3;
             }
