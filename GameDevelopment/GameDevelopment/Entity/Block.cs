@@ -13,7 +13,7 @@ namespace GameDevelopment.Entity
     {
         private Texture2D texture;
         public Rectangle Rectangle { get; set; }
-        private Color Color { get; set; }
+        public Color Color { get; set; }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, Rectangle, Color);

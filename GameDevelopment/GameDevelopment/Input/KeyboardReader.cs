@@ -15,14 +15,14 @@ namespace GameDevelopment.Input
         public string Direction { get; private set; } = "none";
         public bool Pressed { get; private set; } = false;
         public bool Attacked { get; private set; } = false;
-        public bool Jumped { get; private set; } = false;
         public bool Crouch { get; private set; } = false;
+        public bool hasJumped { get; private set; } = false;
         public Vector2 ReadInput()
         {
-            Jumped = false;
             Attacked = false;
             Pressed = false;
             Crouch = false;
+            hasJumped= false;
             KeyboardState state = Keyboard.GetState();
             Vector2 direction = Vector2.Zero;
             if (!state.IsKeyDown(Keys.LeftControl))
@@ -42,32 +42,12 @@ namespace GameDevelopment.Input
                     Pressed = true;
                 }
 
-
                 //Jump
-                if (state.IsKeyDown(Keys.Space) || state.IsKeyDown(Keys.Z) || state.IsKeyDown(Keys.Up) && !(state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q)) && !(state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D)))
+                if ((state.IsKeyDown(Keys.Space) || state.IsKeyDown(Keys.Z) || state.IsKeyDown(Keys.Up)) && hasJumped==false)
                 {
-                    Jumped = true;
+                    hasJumped= true;
                     Pressed = true;
-                    direction.Y -= 5;
-                    Direction = "none";
                 }
-                //Jump left
-                if (state.IsKeyDown(Keys.Space) || state.IsKeyDown(Keys.Z) || state.IsKeyDown(Keys.Up)&&(state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q)) )
-                {
-                    Jumped = true;
-                    Pressed = true;
-                    direction.Y -= 5;
-                    Direction = "left";
-                }
-                //Jump right
-                if (state.IsKeyDown(Keys.Space) || state.IsKeyDown(Keys.Z) || state.IsKeyDown(Keys.Up)&& (state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D)))
-                {
-                    Jumped = true;
-                    Pressed = true;
-                    direction.Y -= 5;
-                    Direction = "right";
-                }
-
 
                 //Crouch
                 if (state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S) && !(state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q)) && !(state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D))) 
@@ -102,7 +82,6 @@ namespace GameDevelopment.Input
             {
                 Pressed = true;
                 Attacked = true;
-
             }
             if (state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S))
             {
@@ -115,6 +94,7 @@ namespace GameDevelopment.Input
                 Direction = "none";
                 Pressed = false;
             }
+
             return direction;
         }
 

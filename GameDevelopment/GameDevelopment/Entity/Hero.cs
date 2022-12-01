@@ -16,27 +16,36 @@ namespace GameDevelopment.Entity
 {
     internal class Hero : IGameObject, IMovable
     {
-        public Texture2D texture { get; set; }
+        #region Properties
         //First texture = idle, then run, then jump, then fall,then crouch, then crouch walk, then attack, then crouch attack
-        private List<Texture2D> textures;
+        public List<Texture2D> textures;
         private List<Animation> animations = new List<Animation>();
-        private int textureCounter = 0;
+        private int scale = 2;
+        public int textureCounter { get; set; } = 0;
+        public SpriteEffects spriteEffect { get; set; }
+        public bool IsAttacking { get; set; } = false;
+        public bool IsJumping { get; set; } = false;
+        public bool IsCrouching { get; set; } = false;
+        public bool IsOnGround { get; set; } = false;
         public Vector2 Position { get; set; }
         public Vector2 Speed { get; set; }
+        public int jump = 0;
+        private int maxJump = 38;
+        private int jumpHeight;
+        public float Gravity { get; set; } = 15f;
         public KeyboardReader keyboardReader { get; set; }
         private MovementManager movementManager = new MovementManager();
-        public Rectangle Hitbox { get; set; }
-        public SpriteEffects spriteEffect { get; set; }
-        private bool IsAttacking { get; set; } = false;
-        private bool IsJumping { get; set; } = false;
-        private bool IsCrouching { get; set; } = false;
-        private static Delay delay =new Delay(0);
+        public List<Block> Hitboxes { get; set; }
+        private Texture2D HitboxTexture{ get; set; }
+        private Vector2 HitBoxPosition { get; set; }
 
-        public Hero(/*Texture2D runTexture,Texture2D idleTexture,Texture2D attackTexture*/List<Texture2D> textures, KeyboardReader keyboard)
+        #endregion
+        public Hero(List<Texture2D> textures, KeyboardReader keyboard, List<Block> hitboxes, Texture2D hitboxTexture)
         {
             this.textures=textures;
             for (int i = 0; i < textures.Count; i++)
                 animations.Add(new Animation());
+
             animations[0].GetFramesFromTextureProperties(this.textures[0].Width, this.textures[0].Height, 10, 1);
             animations[1].GetFramesFromTextureProperties(this.textures[1].Width, this.textures[1].Height, 10, 1);
             animations[2].GetFramesFromTextureProperties(this.textures[2].Width, this.textures[2].Height, 3, 1);
@@ -47,100 +56,187 @@ namespace GameDevelopment.Entity
             animations[7].GetFramesFromTextureProperties(this.textures[7].Width, this.textures[7].Height, 4, 1);
 
             keyboardReader = keyboard;
-            Position = new Vector2(0, 0);
-            Speed = new Vector2(1, 1);
+            Position = new Vector2(0,0);
+            HitBoxPosition = (new Vector2(82, 82));
+            Speed = new Vector2(2 * scale, 0);
+            Hitboxes = hitboxes;
+            this.HitboxTexture = hitboxTexture;
+            jumpHeight = 10;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
+            spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
+            spriteBatch.Draw(HitboxTexture,Position + HitBoxPosition,Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
         }
-
-
         public void Update(GameTime gameTime)
         {
+            jumpHeight = maxJump - jump - (int)Gravity;
+            Jump();
+            Attack();
             Move();
-            if (IsAttacking)
-            {
-                delay.setDelay(2);
-            }
-            Attack(gameTime);
+            Hitboxes[textureCounter].Rectangle = new Rectangle(((int)Position.X+(int)HitBoxPosition.X), ((int)Position.Y + (int)HitBoxPosition.Y), Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
             animations[textureCounter].Update(gameTime);
         }
 
         private void Move()
         {
             movementManager.Move(this);
+            
             if (!IsAttacking)
             {
-                if (keyboardReader.Direction == "left")
+                if (!IsJumping)
                 {
-                    textureCounter = 1;
-                    spriteEffect = SpriteEffects.FlipHorizontally;
-                }
-                else if (keyboardReader.Direction == "right")
-                {
-                    textureCounter = 1;
-                    spriteEffect = SpriteEffects.None;
-                }
-                else if (!keyboardReader.Pressed)
-                {
-                    textureCounter = 0;
-                }
-                else if (keyboardReader.Jumped)
-                {
-                    textureCounter = 2;
-                    IsJumping = true;
-                } 
-                else if(keyboardReader.Crouch) 
-                {
-                    IsCrouching= true;
-                    textureCounter = 4;
-                    if (animations[textureCounter].counter<3)
+                    //Right
+                    if (keyboardReader.Direction == "left" && !IsCrouching)
                     {
-                        animations[textureCounter].counter = 1;
+                        textureCounter = 1;
+                        spriteEffect = SpriteEffects.FlipHorizontally;
+                        HitBoxPosition = (new Vector2(100, 82));
                     }
-
-                }
-                else if(!keyboardReader.Crouch)
-                {
-                    IsCrouching = false;
-                }
-                else if(!keyboardReader.Jumped)
-                {
-                    IsJumping= false;
+                    //Left
+                    else if (keyboardReader.Direction == "right" && !IsCrouching)
+                    {
+                        textureCounter = 1;
+                        spriteEffect = SpriteEffects.None;
+                        HitBoxPosition = new Vector2(82, 82);
+                    }
+                    //Idle
+                    else if (!keyboardReader.Pressed)
+                    {
+                        textureCounter = 0;
+                        if (spriteEffect == SpriteEffects.FlipHorizontally)
+                        {
+                            HitBoxPosition = new Vector2(102, 82);
+                        }
+                        else if (spriteEffect == SpriteEffects.None)
+                        {
+                            HitBoxPosition = new Vector2(82, 82);
+                        }
+                    }
+                    //Crouch
+                    else if (keyboardReader.Crouch && keyboardReader.Direction == "none")
+                    {
+                        IsCrouching = true;
+                        textureCounter = 4;
+                        if (animations[textureCounter].counter < 3)
+                        {
+                            animations[textureCounter].counter = 1;
+                        }
+                        if (spriteEffect == SpriteEffects.FlipHorizontally)
+                        {
+                            HitBoxPosition = new Vector2(98, 102);
+                        }
+                        else if (spriteEffect == SpriteEffects.None)
+                        {
+                            HitBoxPosition = new Vector2(87, 104);
+                        }
+                    }
+                    //Crouch walk left
+                    else if (keyboardReader.Crouch && keyboardReader.Direction == "left")
+                    {
+                        IsCrouching = true;
+                        textureCounter = 5;
+                        spriteEffect = SpriteEffects.FlipHorizontally;
+                        HitBoxPosition = new Vector2(98 , 104 );
+                    }
+                    //Crouch walk right
+                    else if (keyboardReader.Crouch && keyboardReader.Direction == "right")
+                    {
+                        IsCrouching = true;
+                        textureCounter = 5;
+                        spriteEffect = SpriteEffects.None;
+                        HitBoxPosition = new Vector2(87 , 104);
+                    }
+                    else if (!keyboardReader.Crouch)
+                    {
+                        IsCrouching = false;
+                    }
+                    if (IsCrouching)
+                    {
+                        Speed = new Vector2(2, Speed.Y);
+                    }
+                    else if (!IsCrouching)
+                    {
+                        Speed = new Vector2(4, Speed.Y);
+                    }
+                    else if (!IsOnGround)
+                    {
+                        textureCounter = 3;
+                        HitBoxPosition = new Vector2(82, 82);
+                    }
                 }
             }
+
+            if (spriteEffect==SpriteEffects.FlipHorizontally&&textureCounter==6)
+                HitBoxPosition = new Vector2(0, 70);
+            else if(spriteEffect==SpriteEffects.None&&textureCounter==6)
+                HitBoxPosition = new Vector2(82, 70);
+            else if (spriteEffect == SpriteEffects.FlipHorizontally&&textureCounter==7)
+                HitBoxPosition = new Vector2(40, 104);
+            else if(spriteEffect == SpriteEffects.None&&textureCounter==7)
+                HitBoxPosition = new Vector2(48, 104);
+
+            if (!IsOnGround && !IsJumping)
+            {
+                Position += new Vector2(0, Gravity);
+            }
+
+            IsOnGround = false;
+        }
+        private void Attack()
+        {
+                if (keyboardReader.Attacked && !IsCrouching)
+                {
+                    textureCounter = 6;
+                    IsAttacking = true;
+                    if (animations[textureCounter].counter > 4)
+                    {
+                        IsAttacking = false;
+                        animations[textureCounter].counter = 0;
+                    }
+                }
+                else if (keyboardReader.Attacked && IsCrouching)
+                {
+                    textureCounter = 7;
+                    IsAttacking = true;
+                    if (animations[textureCounter].counter > 4)
+                    {
+                        IsAttacking = false;
+                        animations[textureCounter].counter = 0;
+                    }
+                }
+                else
+                {
+                    IsAttacking = false;
+                }
+            
         }
 
-        private void Attack(GameTime gameTime)
+        private void Jump()
         {
+            if (keyboardReader.hasJumped && !IsJumping && IsOnGround)
+            {
+                textureCounter = 2;
+                if (animations[textureCounter].counter < 3)
+                {
+                    animations[textureCounter].counter = 2;
+                }
+                IsJumping = true;
+                IsOnGround= false;
+            }
+            if (!IsJumping) return;
 
-            if (keyboardReader.Attacked)
+            if (jumpHeight<jump-Gravity)
             {
-                textureCounter = 6;
-                IsAttacking= true;
-                if (animations[textureCounter].counter>4 )
-                {
-                    IsAttacking = false;
-                    animations[textureCounter].counter = 0;
-                }
-                
-            } 
-            if(keyboardReader.Attacked && IsCrouching)
-            {
-                textureCounter= 7;
-                IsAttacking= true;
-                if (animations[textureCounter].counter>4)
-                {
-                    IsAttacking = false;
-                    animations[textureCounter].counter = 0;
-                }
+                textureCounter = 3;
             }
-            else
-            {
-                IsAttacking= false;
-            }
+            Position -= new Vector2(0, jumpHeight);
+            jump++;
+
+            if (jump != maxJump) return;
+            IsJumping= false;
+            jump= 0;
         }
     }
 }

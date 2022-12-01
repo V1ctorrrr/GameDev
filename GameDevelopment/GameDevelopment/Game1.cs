@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct2D1.Effects;
 using SharpDX.MediaFoundation;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms.VisualStyles;
 
@@ -20,22 +21,49 @@ namespace GameDevelopment
         private Hero hero;
         //First texture = idle, then run, then jump, then fall,then crouch, t crouch walk, then attack, then crouch attack
         private List<Texture2D> _heroTextures = new List<Texture2D>();
+        private List<Block> _heroHitboxes= new List<Block>();
         private KeyboardReader keyboard;
+        private Block heroBlock;
 
         //Block
         private Texture2D blockTexture;
-        private Block greenBlock;
-
-        //collisionbox of hero
-        private Block blockHero;
-        private Rectangle futureBlock;
         private static Color color;
+        private List<Block> blocks= new List<Block>();
+        private int[,] gameBoard = new int[,]
+        {
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        };
 
-        //boundingbox
-        private int heroWidth;
-        private int heroHeight;
-        private Vector2 heroBlockPosition;
-
+        private void CreateBlocks()
+        {
+            for (int i = 0; i < gameBoard.GetLength(0); i++)
+            {
+                for (int j = 0; j < gameBoard.GetLength(1); j++)
+                {
+                    if (gameBoard[i,j] == 1)
+                    {
+                        blocks.Add(new Block(blockTexture, new Rectangle(j * 80, i * 80, 80, 80),Color.Brown));
+                    }
+                }
+            }
+        }
 
         public Game1()
         {
@@ -48,17 +76,26 @@ namespace GameDevelopment
         {
             // TODO: Add your initialization logic here
             base.Initialize();
-            keyboard= new KeyboardReader();
-            hero = new Hero(/*_heroRunTexture, _heroIdleTexture, _heroAttackTexture*/_heroTextures, keyboard);
-            
-            greenBlock = new Block(blockTexture, new Rectangle(250,0, 150,80),Color.Green);
-            heroBlockPosition = new Vector2((int)hero.Position.X + 41, (int)hero.Position.Y+41);
-            heroWidth = (/*_heroRunTexture.Width*/_heroTextures[1].Width/10)-90;
-            heroHeight = /*_heroRunTexture.Height*/_heroTextures[1].Height -41;
-            blockHero = new Block(blockTexture, new Rectangle((int)heroBlockPosition.X, (int)heroBlockPosition.Y, heroWidth, heroHeight), Color.Red);
-            futureBlock = blockHero.Rectangle;
 
+            _graphics.PreferredBackBufferWidth = 2560;
+            _graphics.PreferredBackBufferHeight = 1440;
+            _graphics.ApplyChanges();
+
+            
+            keyboard = new KeyboardReader();
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(80, 82, (_heroTextures[0].Width / 10) - 65, _heroTextures[0].Height), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(80, 82, (_heroTextures[1].Width / 10) - 65, _heroTextures[1].Height), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(82, 82, (_heroTextures[2].Width / 3) - 65, _heroTextures[2].Height), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(82, 82, (_heroTextures[3].Width / 3) - 65, _heroTextures[3].Height), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(87, 104, (_heroTextures[4].Width / 3) - 62, _heroTextures[4].Height - 22), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(87, 104, (_heroTextures[5].Width / 8) - 62, _heroTextures[5].Height - 22), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(80, 70, (_heroTextures[0].Width / 10) + 34, _heroTextures[0].Height + 10), Color.Red));
+            _heroHitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(25, 104, (_heroTextures[7].Width / 4) + 30, _heroTextures[7].Height - 20), Color.Red));
+
+            hero = new Hero(_heroTextures, keyboard, _heroHitboxes, blockTexture);
+            heroBlock = new Block(blockTexture, new Rectangle((int)hero.Position.X + 41, (int)hero.Position.Y + 41, (_heroTextures[0].Width / 10) - 90, _heroTextures[0].Height - 41), Color.Red);
             color = Color.CornflowerBlue;
+            CreateBlocks();
         }
 
         protected override void LoadContent()
@@ -83,24 +120,12 @@ namespace GameDevelopment
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            var tempPosition = hero.Position;
             hero.Update(gameTime);
-            heroBlockPosition.X = hero.Position.X+41;
-            heroBlockPosition.Y = hero.Position.Y+41;
-            futureBlock = new Rectangle((int)heroBlockPosition.X, (int)heroBlockPosition.Y,heroWidth, heroHeight);
-
-
-            if (futureBlock.Intersects(greenBlock.Rectangle))
+            heroBlock.Rectangle = new Rectangle((int)hero.Position.X + 45, (int)hero.Position.Y+ 104, (_heroTextures[0].Width / 10) +30, _heroTextures[0].Height -20);
+            foreach (var block in blocks)
             {
-                color = Color.Black;
-                hero.Position = tempPosition;
+                Collision.Collide(hero, block);
             }
-            else
-            {
-                blockHero.Rectangle = new Rectangle((int)heroBlockPosition.X, (int)heroBlockPosition.Y,heroWidth, heroHeight);
-                color = Color.CornflowerBlue;
-            }
-            
 
             base.Update(gameTime);
         }
@@ -110,11 +135,12 @@ namespace GameDevelopment
             GraphicsDevice.Clear(color);
 
             _spriteBatch.Begin();
-
             hero.Draw(_spriteBatch);
-            greenBlock.Draw(_spriteBatch);
-            //blockHero.Draw(_spriteBatch);
-
+            foreach (var block in blocks)
+            {
+                block.Draw(_spriteBatch);
+            }
+            //heroBlock.Draw(_spriteBatch);
             _spriteBatch.End();
             
             base.Draw(gameTime);
