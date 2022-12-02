@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameDevelopment.Entity
+namespace GameDevelopment.Environment.BuildingBlocks
 {
     internal class Block : Interfaces.IGameComponent
     {

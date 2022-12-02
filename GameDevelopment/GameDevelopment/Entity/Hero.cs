@@ -1,4 +1,6 @@
 ﻿using GameDevelopment.animations;
+using GameDevelopment.Environment;
+using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Input;
 using GameDevelopment.Interfaces;
 using Microsoft.Xna.Framework;
@@ -38,6 +40,8 @@ namespace GameDevelopment.Entity
         private Vector2 HitBoxPosition { get; set; }
         public int Health { get; set; } = 15;
         public int Damage { get; set; } = 5;
+        private int attackCount = 0;
+        private double time = 1;
         public bool IsAlive { get; set; } = true;
 
         #endregion
@@ -68,13 +72,13 @@ namespace GameDevelopment.Entity
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), 2, spriteEffect, 0f);
-            spriteBatch.Draw(HitboxTexture,Position + HitBoxPosition,Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
+            //spriteBatch.Draw(HitboxTexture,Position + HitBoxPosition,Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
         }
         public void Update(GameTime gameTime)
         {
             jumpHeight = maxJump - jump - (int)Information.Gravity;
             Jump();
-            Attack();
+            Attack(gameTime);
             Move();
             Hitboxes[textureCounter].Rectangle = new Rectangle(((int)Position.X+(int)HitBoxPosition.X), ((int)Position.Y + (int)HitBoxPosition.Y), Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
             animations[textureCounter].Update(gameTime);
@@ -185,32 +189,50 @@ namespace GameDevelopment.Entity
 
             IsOnGround = false;
         }
-        private void Attack()
+
+        private void Attack(GameTime gameTime)
         {
-                
-            if (keyboardReader.Attacked && !IsCrouching)
+            IsAttacking = false;
+            time += gameTime.ElapsedGameTime.TotalSeconds;
+            animations[textureCounter].fps = 20;
+            if (!keyboardReader.Attacked) return;
+            animations[textureCounter].fps = 10;
+            if (attackCount<=20) 
             {
-                textureCounter = 6;
                 IsAttacking = true;
-                if (animations[textureCounter].counter > 4)
+                if (!IsCrouching)
                 {
-                    IsAttacking = false;
-                    animations[textureCounter].counter = 0;
+                    textureCounter = 6;
+                    animations[textureCounter].fps = 10;
+                    attackCount++;
                 }
-            }
-            else if (keyboardReader.Attacked && IsCrouching)
-            {
-                textureCounter = 7;
-                IsAttacking = true;
-                if (animations[textureCounter].counter > 4)
+                else
                 {
-                    IsAttacking = false;
-                    animations[textureCounter].counter = 0;
+                    textureCounter = 7;
+                    animations[textureCounter].fps = 10;
+                    attackCount++;
                 }
             }
             else
             {
-                IsAttacking = false;
+                animations[textureCounter].counter = 0;
+                textureCounter = 0;
+                if (spriteEffect == SpriteEffects.FlipHorizontally)
+                {
+                    HitBoxPosition = new Vector2(102, 82);
+                }
+                else if (spriteEffect == SpriteEffects.None)
+                {
+                    HitBoxPosition = new Vector2(82, 82);
+                }
+                animations[textureCounter].fps = 20;
+            }
+            
+            if (time>=1)
+            {
+                time = 0;
+                attackCount=0;
+                
             }
         }
 

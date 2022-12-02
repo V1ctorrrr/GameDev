@@ -70,18 +70,13 @@ namespace GameDevelopment.Input
                     Pressed = true;
                     Crouch = true;
                 }
-
-
-                if (!Pressed)
-                {
-                    Direction = "none";
-                    Pressed = false;
-                }
             }
             if (state.IsKeyDown(Keys.LeftControl))
             {
+                
                 Pressed = true;
                 Attacked = true;
+                
             }
             if (state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S))
             {

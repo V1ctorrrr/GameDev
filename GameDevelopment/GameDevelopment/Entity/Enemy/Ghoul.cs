@@ -1,4 +1,5 @@
 ﻿using GameDevelopment.animations;
+using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameDevelopment.Entity
+namespace GameDevelopment.Entity.Enemy
 {
     internal class Ghoul : IGameObject
     {
@@ -29,13 +30,13 @@ namespace GameDevelopment.Entity
         public Ghoul(List<Texture2D> textures, List<Block> hitboxes, Texture2D hitboxTexture)
         {
             this.textures = textures;
-            this.Hitboxes = hitboxes;
-            this.HitboxTexture = hitboxTexture;
+            Hitboxes = hitboxes;
+            HitboxTexture = hitboxTexture;
 
             for (int i = 0; i < textures.Count; i++)
                 animations.Add(new Animation());
 
-            
+
 
             Position = new Vector2(50f, 50f);
             Speed = new Vector2(2f, 2f);
@@ -51,7 +52,7 @@ namespace GameDevelopment.Entity
         public void Update(GameTime gameTime)
         {
             animations[textureCounter].Update(gameTime);
-            Hitboxes[textureCounter].Rectangle = new Rectangle(((int)Position.X + (int)HitBoxPosition.X), ((int)Position.Y + (int)HitBoxPosition.Y), Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
+            Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitBoxPosition.X, (int)Position.Y + (int)HitBoxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
             //Move();
         }
 

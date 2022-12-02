@@ -1,5 +1,7 @@
 ﻿using GameDevelopment.animations;
 using GameDevelopment.Entity;
+using GameDevelopment.Environment;
+using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -29,6 +31,9 @@ namespace GameDevelopment
         private Boar boar;
         private List<Texture2D> _boarTexture = new List<Texture2D>();
         private List<Block> boarHitbox= new List<Block>();
+
+        //BackgroundImage
+        private Texture2D _backgroundImage;
 
         //Block
         private Texture2D blockTexture;
@@ -127,6 +132,8 @@ namespace GameDevelopment
 
             blockTexture = new Texture2D(GraphicsDevice, 1, 1);
             blockTexture.SetData(new[] { Color.White });
+
+            _backgroundImage = Content.Load<Texture2D>("Background/Background");
         }
 
         protected override void Update(GameTime gameTime)
@@ -152,8 +159,10 @@ namespace GameDevelopment
             GraphicsDevice.Clear(color);
 
             _spriteBatch.Begin();
+            _spriteBatch.Draw(_backgroundImage, new Rectangle(0, 0, Information.screenWidth, Information.screenHeight), Color.White);
             hero.Draw(_spriteBatch);
             boar.Draw(_spriteBatch);
+            
             foreach (var block in blocks)
             {
                 block.Draw(_spriteBatch);

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using GameDevelopment.Entity.Enemy;
+using GameDevelopment.Environment.BuildingBlocks;
+using GameDevelopment.Environment;
 
 namespace GameDevelopment
 {
@@ -64,7 +67,7 @@ namespace GameDevelopment
                     tempPos.Y = block.Rectangle.Bottom - hero.Hitboxes[hero.textureCounter].Rectangle.Height/2-40;
                 }
 
-                if (hero.IsJumping&& hero.Hitboxes[hero.textureCounter].Rectangle.Bottom <= block.Rectangle.Top + Information.Gravity)
+                if (hero.IsJumping && hero.Hitboxes[hero.textureCounter].Rectangle.Bottom <= block.Rectangle.Top + Information.Gravity)
                 {
                     hero.IsOnGround = true;
                     hero.IsJumping= false;
@@ -161,10 +164,13 @@ namespace GameDevelopment
 
             if (hero.Hitboxes[hero.textureCounter].Rectangle.Intersects(boar.Hitboxes[boar.textureCounter].Rectangle))
             {
-                if (hero.textureCounter == 6 || hero.textureCounter == 7)
+                if (hero.textureCounter == 6 || hero.textureCounter == 7 && !boar.IsTakingDamage)
                 {
                     boar.Health -= hero.Damage;
-                    boar.textureCounter = 2;
+                    boar.Attacked = true;
+                } else
+                {
+                    boar.Attacked = false;
                 }
             }
         }

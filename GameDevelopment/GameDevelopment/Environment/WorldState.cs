@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameDevelopment
+namespace GameDevelopment.Environment
 {
     internal enum WorldState
     {

@@ -11,5 +11,6 @@ namespace GameDevelopment
         public static float Gravity = 15f;
         public static int screenWidth = 25560;
         public static int screenHeight = 1440;
+        public static Random random= new Random();
     }
 }

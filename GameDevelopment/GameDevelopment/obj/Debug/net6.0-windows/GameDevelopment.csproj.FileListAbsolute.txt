@@ -47,3 +47,5 @@ D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Deb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Hero\_Idle.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Hero\_Jump.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Hero\_Run.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Background\Background.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Ghoul\Ghoul Sprite Sheet.xnb
