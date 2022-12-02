@@ -1,4 +1,0 @@
-﻿[*.cs]
-
-# CS0414: The field 'Hero.schuifOp_X' is assigned but its value is never used
-dotnet_diagnostic.CS0414.severity = none
