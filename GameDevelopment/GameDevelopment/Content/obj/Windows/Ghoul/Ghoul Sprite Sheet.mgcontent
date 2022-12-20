@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Ghoul/Ghoul Sprite Sheet.png</SourceFile>
-  <SourceTime>2022-12-01T19:33:25.7993556+01:00</SourceTime>
+  <SourceTime>2022-12-04T17:25:14.7308717+01:00</SourceTime>
   <DestFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/Ghoul/Ghoul Sprite Sheet.xnb</DestFile>
-  <DestTime>2022-12-02T09:25:15.7996599+01:00</DestTime>
+  <DestTime>2022-12-09T18:53:14.6162992+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

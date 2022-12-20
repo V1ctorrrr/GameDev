@@ -50,25 +50,28 @@ namespace GameDevelopment.Input
                 }
 
                 //Crouch
-                if (state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S) && !(state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q)) && !(state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D))) 
+                if (!state.IsKeyDown(Keys.Space) || !state.IsKeyDown(Keys.Up))
                 {
-                    Crouch = true;
-                    Pressed = true;
-                    Direction = "none";
-                }
-                //Crouch walk left
-                if ((state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S)) && (state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q))) 
-                {
-                    Direction = "left";
-                    Pressed = true;
-                    Crouch = true;
-                }
-                //Crouch walk right
-                if ((state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S)) && (state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D)))
-                {
-                    Direction = "right";
-                    Pressed = true;
-                    Crouch = true;
+                    if (state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S) && !(state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q)) && !(state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D)))
+                    {
+                        Crouch = true;
+                        Pressed = true;
+                        Direction = "none";
+                    }
+                    //Crouch walk left
+                    if ((state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S)) && (state.IsKeyDown(Keys.Left) || state.IsKeyDown(Keys.Q)))
+                    {
+                        Direction = "left";
+                        Pressed = true;
+                        Crouch = true;
+                    }
+                    //Crouch walk right
+                    if ((state.IsKeyDown(Keys.Down) || state.IsKeyDown(Keys.S)) && (state.IsKeyDown(Keys.Right) || state.IsKeyDown(Keys.D)))
+                    {
+                        Direction = "right";
+                        Pressed = true;
+                        Crouch = true;
+                    }
                 }
             }
             if (state.IsKeyDown(Keys.LeftControl))

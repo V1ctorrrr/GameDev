@@ -1,3 +1,3 @@
 ﻿
-using var game = new GameDevelopment.Game1();
+using var game = new GameDevelopment.KnightsJourney();
 game.Run();

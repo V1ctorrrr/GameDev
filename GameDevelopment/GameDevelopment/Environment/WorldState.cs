@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace GameDevelopment.Environment
 {
-    internal enum WorldState
+    public enum WorldState
     {
         MainMenu,
         Death,
         Level1,
         Level2,
         Level3,
-        Won
+        Won,
+        Tutorial
     }
 }

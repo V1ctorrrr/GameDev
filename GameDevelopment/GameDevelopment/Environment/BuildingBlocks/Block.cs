@@ -13,17 +13,19 @@ namespace GameDevelopment.Environment.BuildingBlocks
     {
         private Texture2D texture;
         public Rectangle Rectangle { get; set; }
+        public Rectangle TileTexture { get; set; }
         public Color Color { get; set; }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Rectangle, Color);
+            spriteBatch.Draw(texture, Rectangle, TileTexture,Color);
         }
 
 
-        public Block(Texture2D texture, Rectangle rectangle, Color color)
+        public Block(Texture2D texture, Rectangle rectangle, Rectangle tileTexture,Color color)
         {
             this.texture = texture;
             Rectangle = rectangle;
+            this.TileTexture = tileTexture;
             Color = color;
         }
     }

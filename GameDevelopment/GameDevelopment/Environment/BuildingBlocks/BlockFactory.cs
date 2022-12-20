@@ -1,40 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
 
 namespace GameDevelopment.Environment.BuildingBlocks
 {
-    internal class BlockFactory
+    internal static class BlockFactory
     {
-        public static Block CreateBLock(string type, int x, int y, GraphicsDevice graphics, Texture2D texture, Color color)
+        public static List<Block> CreateBlocks(int[,] gameBoard, List<Block> blocks, Texture2D tileSet)
         {
-            Block newBlock = null;
-            type.ToUpper();
-            if (type == "NORMAL")
+            for (int x = 0; x < gameBoard.GetLength(0); x++)
             {
-                newBlock = new Block(texture, new Rectangle(x, y, 80, 80), color);
-            }
-            return newBlock;
-        }
-
-        private void CreateBlocks()
-        {
-            /*
-            for (int i = 0; i < gameBoard.GetLength(0); i++)
-            {
-                for (int j = 0; j < gameBoard.GetLength(1); j++)
+                for (int y = 0; y < gameBoard.GetLength(1); y++)
                 {
-                    if (gameBoard[i, j] == 1)
+                    if (gameBoard[x, y] == 1)
                     {
-                        blocks.Add(new Block(blockTexture, new Rectangle(j * 80, i * 80, 80, 80), Color.Brown));
+                        blocks.Add(new Block(tileSet, new Rectangle(y * 80, x * 80, 80, 80), new Rectangle(15, 11, 50, 50), Color.White));
+                    }
+                    else if (gameBoard[x, y] == 2)
+                    {
+                        blocks.Add(new Block(tileSet, new Rectangle(y * 80, x * 80, 80, 80), new Rectangle(22, 126, 38, 32), Color.White));
+                    } else if (gameBoard[x,y] == 3)
+                    {
+                        blocks.Add(new Block(tileSet, new Rectangle(y * 80, x * 80, 80, 80), new Rectangle(22, 120, 30, 22), Color.White));
+                    } else if (gameBoard[x,y]== 4)
+                    {
+                        blocks.Add(new Block(tileSet, new Rectangle(y * 80, x * 80, 80, 20), new Rectangle(21, 129, 42, 29), Color.White));
                     }
                 }
             }
-            */
+
+            return blocks;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace GameDevelopment.Interfaces
     {
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spritebatch);
+        void LoadContent(ContentManager Content);
     }
 }

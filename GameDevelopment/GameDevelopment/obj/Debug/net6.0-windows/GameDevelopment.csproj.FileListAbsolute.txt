@@ -49,3 +49,16 @@ D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Deb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Hero\_Run.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Background\Background.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Ghoul\Ghoul Sprite Sheet.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Hero\_Hit.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Skeleton\Skeleton Attack.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Skeleton\Skeleton Dead.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Skeleton\Skeleton Hit.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Skeleton\Skeleton Idle.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Skeleton\Skeleton Walk.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Tiles\Tiles.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\GUI.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Heart&ManaUi.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Fonts\myFont.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Fonts\Font.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Fonts\MinimalPixelFont.ttf
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\MainMenu\Mountain-Dusk.xnb
