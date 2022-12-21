@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Fonts/Font.spritefont</SourceFile>
-  <SourceTime>2022-12-09T19:03:19.500188+01:00</SourceTime>
+  <SourceTime>2022-12-09T19:09:35.725236+01:00</SourceTime>
   <DestFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/UI/Fonts/Font.xnb</DestFile>
-  <DestTime>2022-12-09T19:07:25.6457282+01:00</DestTime>
+  <DestTime>2022-12-21T13:56:52.1711223+01:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

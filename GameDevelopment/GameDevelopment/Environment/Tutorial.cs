@@ -1,5 +1,5 @@
 ﻿using GameDevelopment.Entity.Enemy;
-using GameDevelopment.Entity.Hero;
+using GameDevelopment.Entity.Character;
 using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Interfaces;
 using Microsoft.Xna.Framework;
@@ -38,35 +38,25 @@ namespace GameDevelopment.Environment
         public List<IEnemy> enemies = new List<IEnemy>();
 
         private SpriteFont spriteFont;
-        private string text1;
-        private string text2;
-        private string text3;
-        private string text4;
-        private Vector2 textPosition;
+
         public Tutorial()
         {
-            enemies.Add(new Boar(new Vector2(1100, 500)));
-            textPosition = new Vector2(10, 500);
-            text1 = "Move with \narrow keys or Q/D";
-            text2 = "Jump with \nup arrow key \nor space or Z";
-            text3 = "Attack with ctrl";
-            text4 = "Crouch with \ndown arrow key or S";
+            enemies.Add(new Boar(new Vector2(1100, 900)));
         }
 
         public void AddHitboxes(GraphicsDevice GraphicsDevice)
         {
             hero.AddHitboxes(GraphicsDevice);
             enemies[0].AddHitboxes(GraphicsDevice);
-            
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_backgroundImage, new Rectangle(0, 0, Information.screenWidth, Information.screenHeight), Color.White);
-            spriteBatch.DrawString(spriteFont,text1,new Vector2(10,750),Color.White);
-            spriteBatch.DrawString(spriteFont, text2, new Vector2(325, 600), Color.White);
-            spriteBatch.DrawString(spriteFont, text3, new Vector2(800, 700), Color.White);
-            spriteBatch.DrawString(spriteFont, text4, new Vector2(1200, 400), Color.White);
+            spriteBatch.DrawString(spriteFont, "Move with \narrow keys or Q/D", new Vector2(10,750),Color.White);
+            spriteBatch.DrawString(spriteFont, "Jump with \nup arrow key \nor space or Z", new Vector2(325, 600), Color.White);
+            spriteBatch.DrawString(spriteFont, "Attack with ctrl\nEvade the boar's front\nonce you have attacked it \nas it will damage you", new Vector2(800, 700), Color.White);
+            spriteBatch.DrawString(spriteFont, "Crouch with \ndown arrow key or S", new Vector2(1200, 400), Color.White);
             hero.Draw(spriteBatch);
 
             enemies[0].Draw(spriteBatch);

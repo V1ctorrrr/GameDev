@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using GameDevelopment.Entity.Enemy;
 using GameDevelopment.Environment.BuildingBlocks;
-using GameDevelopment.Entity.Hero;
+using GameDevelopment.Entity.Character;
 using GameDevelopment.Interfaces;
 using Microsoft.Xna.Framework;
 
@@ -15,11 +15,11 @@ namespace GameDevelopment
 
             var tempPos = hero.Position;
 
-            if (hero.Position.X<0-hero.HitboxPosition.X)
-                tempPos.X = 0-hero.HitboxPosition.X;
+            if (hero.Position.X < 0 - hero.HitboxPosition.X)
+                tempPos.X = 0 - hero.HitboxPosition.X;
 
             if (!hero.Hitboxes[hero.textureCounter].Rectangle.Intersects(block.Rectangle)) return;
-            
+
             if (hero.Hitboxes[hero.textureCounter].Rectangle.Intersects(block.Rectangle))
             {
                 if (hero.Hitboxes[hero.textureCounter].Rectangle.Bottom <= block.Rectangle.Top + Information.Gravity)
@@ -31,7 +31,7 @@ namespace GameDevelopment
                 }
                 else if (hero.Hitboxes[hero.textureCounter].Rectangle.Right > block.Rectangle.Left &&
                     hero.Hitboxes[hero.textureCounter].Rectangle.Left < block.Rectangle.Left &&
-                    !(hero.Hitboxes[hero.textureCounter].Rectangle.Right > block.Rectangle.Left + (block.Rectangle.Width / 20)))
+                    !(hero.Hitboxes[hero.textureCounter].Rectangle.Right > block.Rectangle.Left + block.Rectangle.Width / 20))
                 {
                     if (hero.textureCounter != 6 && hero.textureCounter != 7)
                     {
@@ -48,7 +48,7 @@ namespace GameDevelopment
                 }
                 else if (hero.Hitboxes[hero.textureCounter].Rectangle.Left < block.Rectangle.Right &&
                     hero.Hitboxes[hero.textureCounter].Rectangle.Right > block.Rectangle.Right &&
-                    !(hero.Hitboxes[hero.textureCounter].Rectangle.Left < block.Rectangle.Right - (block.Rectangle.Width / 20)))
+                    !(hero.Hitboxes[hero.textureCounter].Rectangle.Left < block.Rectangle.Right - block.Rectangle.Width / 20))
                 {
                     if (hero.textureCounter != 6 && hero.textureCounter != 7)
                     {
@@ -74,11 +74,11 @@ namespace GameDevelopment
                 if (hero.IsJumping && hero.Hitboxes[hero.textureCounter].Rectangle.Bottom <= block.Rectangle.Top + Information.Gravity)
                 {
                     hero.IsOnGround = true;
-                    hero.IsJumping= false;
+                    hero.IsJumping = false;
                     hero.jump = 0;
                 }
             }
-            
+
             hero.Position = tempPos;
         }
 
@@ -88,19 +88,19 @@ namespace GameDevelopment
 
             var tempPos = enemy.Position;
             var tempSpeed = enemy.Speed;
-            if (enemy.Position.X<0-enemy.HitboxPosition.X)
+            if (enemy.Position.X < 0 - enemy.HitboxPosition.X)
             {
                 tempSpeed *= -1;
             }
-            if (!(enemy.Hitboxes[enemy.textureCounter].Rectangle.Intersects(block.Rectangle))) return;
+            if (!enemy.Hitboxes[enemy.textureCounter].Rectangle.Intersects(block.Rectangle)) return;
 
-            
+
 
             if (enemy.Hitboxes[enemy.textureCounter].Rectangle.Bottom <= block.Rectangle.Top + Information.Gravity)
             {
                 enemy.IsOnGround = true;
                 tempPos.Y = block.Rectangle.Top - enemy.Hitboxes[enemy.textureCounter].Rectangle.Height - enemy.HitboxPosition.Y;
-                
+
             }
             else if (enemy.Hitboxes[enemy.textureCounter].Rectangle.Right > block.Rectangle.Left &&
                     enemy.Hitboxes[enemy.textureCounter].Rectangle.Left < block.Rectangle.Left)
@@ -142,8 +142,8 @@ namespace GameDevelopment
                     enemy.Attacked = false;
                 }
             }
-            
-            if (enemy.Hitboxes[enemy.textureCounter].Rectangle.Top < hero.Hitboxes[hero.textureCounter].Rectangle.Bottom && 
+
+            if (enemy.Hitboxes[enemy.textureCounter].Rectangle.Top < hero.Hitboxes[hero.textureCounter].Rectangle.Bottom &&
                 enemy.Hitboxes[enemy.textureCounter].Rectangle.Bottom > hero.Hitboxes[hero.textureCounter].Rectangle.Top)
             {
                 if (enemy.Hitboxes[enemy.textureCounter].Rectangle.Left < hero.Hitboxes[hero.textureCounter].Rectangle.Right + 10 &&

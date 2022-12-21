@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using GameDevelopment.Interfaces;
 using GameDevelopment.Environment.BuildingBlocks;
 using Microsoft.Xna.Framework.Content;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace GameDevelopment.Entity.Enemy
 {
@@ -39,6 +38,8 @@ namespace GameDevelopment.Entity.Enemy
         private float deathCounter = 0;
         private float hitAnimationTime = 0;
         private double time = 1;
+
+        private HealthBar healthBar;
         #endregion
         public Boar(Vector2 position)
         {
@@ -46,6 +47,7 @@ namespace GameDevelopment.Entity.Enemy
             Speed = new Vector2(3f, 0);
             HitboxPosition = new Vector2(5, 14);
             SwordPosition = new Vector2(120, 0);
+            healthBar = new HealthBar(this);
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -56,6 +58,7 @@ namespace GameDevelopment.Entity.Enemy
                 //Hitboxes
                 //spritebatch.Draw(HitboxTexture, Position + HitboxPosition, Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(),1, SpriteEffects.None, 0f);
                 //spritebatch.Draw(HitboxTexture, Position + HitboxPosition + SwordPosition, SwordHitbox[0], Color.Black, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
+                healthBar.DrawHealthBar(spritebatch);
             }
         }
 
@@ -73,6 +76,7 @@ namespace GameDevelopment.Entity.Enemy
                 SwordHitbox[0] = new Rectangle((int)Hitboxes[2].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[2].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[2].Rectangle.Width -100, Hitboxes[2].Rectangle.Height);
             }
             animations[textureCounter].Update(gameTime);
+            healthBar.Update(gameTime, this);
         }
 
         public void Move(GameTime gameTime)
@@ -207,6 +211,8 @@ namespace GameDevelopment.Entity.Enemy
             animations[0].GetFramesFromTextureProperties(this.textures[0].Width, this.textures[0].Height, 4, 1);
             animations[1].GetFramesFromTextureProperties(this.textures[1].Width, this.textures[1].Height, 6, 1);
             animations[2].GetFramesFromTextureProperties(this.textures[2].Width, this.textures[2].Height, 4, 1);
+
+            healthBar.LoadContent(Content);
         }
 
         public void AddHitboxes(GraphicsDevice GraphicsDevice)

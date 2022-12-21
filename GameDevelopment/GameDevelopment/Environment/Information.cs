@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameDevelopment.Environment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace GameDevelopment
         public static int screenHeight = 1080;
         public static Random random= new Random();
         public static KnightsJourney KnightsJourney;
+        public static WorldState prevState;
     }
 }

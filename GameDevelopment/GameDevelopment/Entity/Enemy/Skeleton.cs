@@ -40,6 +40,7 @@ namespace GameDevelopment.Entity.Enemy
         public Vector2 SwordPosition { get; set; }
         public int swordBoxCounter { get; set; } = 0;
         public char AttackDirection { get; set; } = 'N';
+        private HealthBar healthBar;
         #endregion
         public Skeleton(Vector2 position)
         {
@@ -47,6 +48,7 @@ namespace GameDevelopment.Entity.Enemy
             Speed = new Vector2(2f, 0);
             HitboxPosition = new Vector2(0, 15);
             SwordPosition = new Vector2(53,0);
+            healthBar = new HealthBar(this);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -54,7 +56,7 @@ namespace GameDevelopment.Entity.Enemy
             if (IsAlive)
             {
                 spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
-
+                healthBar.DrawHealthBar(spriteBatch);
                 //Draw Hitboxes
                 //spriteBatch.Draw(HitboxTexture, Position + HitboxPosition, Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(), 1, spriteEffect, 0f);
                 //if (IsAttacking)
@@ -74,6 +76,7 @@ namespace GameDevelopment.Entity.Enemy
             if (IsAttacking)
                 SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width+10, Hitboxes[swordBoxCounter].Rectangle.Height+5);
             animations[textureCounter].Update(gameTime);
+            healthBar.Update(gameTime, this);
         }
 
         public void Move(GameTime gameTime)
@@ -179,6 +182,7 @@ namespace GameDevelopment.Entity.Enemy
             IsAlive = false;
             Speed = new Vector2(0, 0);
         }
+
         public void Attack(GameTime gameTime)
         {
             time += gameTime.ElapsedGameTime.TotalSeconds;
@@ -233,6 +237,7 @@ namespace GameDevelopment.Entity.Enemy
             animations[2].GetFramesFromTextureProperties(this.textures[2].Width, this.textures[2].Height, 18, 1);
             animations[3].GetFramesFromTextureProperties(this.textures[3].Width, this.textures[3].Height, 8, 1);
             animations[4].GetFramesFromTextureProperties(this.textures[4].Width, this.textures[4].Height, 15, 1);
+            healthBar.LoadContent(Content);
         }
 
         public void AddHitboxes(GraphicsDevice GraphicsDevice)

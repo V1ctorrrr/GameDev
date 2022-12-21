@@ -1,12 +1,11 @@
 ﻿using GameDevelopment.Entity.Enemy;
-using GameDevelopment.Entity.Hero;
+using GameDevelopment.Entity.Character;
 using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-
 namespace GameDevelopment.Environment
 {
     internal class Level1: ILevel
@@ -29,7 +28,7 @@ namespace GameDevelopment.Environment
             { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
             { 1, 1, 1, 1, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
             { 3, 3, 3, 3, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3},
-            { 3, 3, 3, 3, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
+            { 3, 3, 3, 3, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
         };
 
         public Hero hero = new Hero(new Vector2(0,620));
@@ -83,7 +82,7 @@ namespace GameDevelopment.Environment
                 enemy.LoadContent(Content);
             }
             tileSet = Content.Load<Texture2D>("Tiles/Tiles");
-            _backgroundImage = Content.Load<Texture2D>("Background/Background");
+            _backgroundImage = Content.Load<Texture2D>("Background/Level1/pre");
             blocks = BlockFactory.CreateBlocks(gameBoard, blocks, tileSet);
         }
 

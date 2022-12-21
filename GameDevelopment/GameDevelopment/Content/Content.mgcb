@@ -25,6 +25,42 @@
 /processorParam:TextureFormat=Color
 /build:Background/Background.png
 
+#begin Background/Level1/pre.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Background/Level1/pre.png
+
+#begin Background/Level2/BIGPRE_ORIG_SIZE.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Background/Level2/BIGPRE_ORIG_SIZE.png
+
+#begin Background/Level3/BIGPRE_ORIG_SIZE.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Background/Level3/BIGPRE_ORIG_SIZE.png
+
 #begin Boar/Hit-Sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -60,6 +96,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Boar/Run-Sheet.png
+
+#begin C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/1.png;UI/Death/1.png
+
+#begin C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/2.png;UI/Death/2.png
+
+#begin C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/3.png;UI/Death/3.png
+
+#begin C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/4.png;UI/Death/4.png
 
 #begin Ghoul/Ghoul Sprite Sheet.png
 /importer:TextureImporter
@@ -275,7 +359,7 @@
 /processorParam:TextureFormat=Color
 /build:UI/GUI.png
 
-#begin UI/Heart&ManaUi.png
+#begin UI/HealthBar/background.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -285,7 +369,55 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:UI/Heart&ManaUi.png
+/build:UI/HealthBar/background.png
+
+#begin UI/HealthBar/border.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/HealthBar/border.png
+
+#begin UI/HealthBar/health_bar_decoration.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/HealthBar/health_bar_decoration.png
+
+#begin UI/HealthBar/health_bar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/HealthBar/health_bar.png
+
+#begin UI/HealthBar/heart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/HealthBar/heart.png
 
 #begin UI/MainMenu/Mountain-Dusk.png
 /importer:TextureImporter

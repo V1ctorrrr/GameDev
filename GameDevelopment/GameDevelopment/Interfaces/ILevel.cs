@@ -1,4 +1,4 @@
-﻿using GameDevelopment.Entity.Hero;
+﻿using GameDevelopment.Entity.Character;
 using GameDevelopment.Environment.BuildingBlocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;

@@ -57,8 +57,19 @@ D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Deb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Skeleton\Skeleton Walk.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Tiles\Tiles.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\GUI.xnb
-D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Heart&ManaUi.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Fonts\myFont.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Fonts\Font.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Fonts\MinimalPixelFont.ttf
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\MainMenu\Mountain-Dusk.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Death\1.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Death\2.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Death\3.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Death\4.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Background\Level1\pre.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Background\Level2\BIGPRE_ORIG_SIZE.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Background\Level3\BIGPRE_ORIG_SIZE.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\HealthBar\background.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\HealthBar\border.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\HealthBar\health_bar.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\HealthBar\health_bar_decoration.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\HealthBar\heart.xnb

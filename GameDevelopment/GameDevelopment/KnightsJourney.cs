@@ -13,13 +13,11 @@ namespace GameDevelopment
 
         private bool firstUpdate = true;
 
-        private Level1 level1 = new Level1();
-        private Level2 level2 = new Level2();
-        private Level3 level3 = new Level3();
-        private Tutorial tutorial = new Tutorial();
-        private MainMenu MainMenu=new MainMenu();
+        internal Level1 level1 = new Level1();
+        internal Level2 level2 = new Level2();
+        internal Level3 level3 = new Level3();
+        internal Tutorial tutorial = new Tutorial();
         public WorldState worldState = WorldState.MainMenu;
-
         public KnightsJourney()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -43,26 +41,39 @@ namespace GameDevelopment
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+
             MainMenu.LoadContent(Content);
+            Death.LoadContent(Content);
 
             tutorial.LoadContent(Content);
             tutorial.AddHitboxes(GraphicsDevice);
 
             level1.LoadContent(Content);
             level1.AddHitboxes(GraphicsDevice);
-            
+                /*
+            level2.LoadContent(Content);
+            level2.AddHitboxes(GraphicsDevice);
+
+            level3.LoadContent(Content);
+            level3.AddHitboxes(GraphicsDevice);
+                */
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 worldState= WorldState.MainMenu;
+            
+            if (worldState != WorldState.Death)
+                Information.prevState = worldState;
 
             if (firstUpdate)
             {
                 MainMenu.Update(gameTime);
+                Death.Update(gameTime);
                 level1.Update(gameTime);
                 tutorial.Update(gameTime);
+                
                 firstUpdate= false;
             }
             else
@@ -73,6 +84,7 @@ namespace GameDevelopment
                         MainMenu.Update(gameTime);
                         break;
                     case WorldState.Death:
+                        Death.Update(gameTime);
                         break;
                     case WorldState.Level1:
                         level1.Update(gameTime);
@@ -106,6 +118,7 @@ namespace GameDevelopment
                     MainMenu.Draw(_spriteBatch);
                     break;
                 case WorldState.Death:
+                    Death.Draw(_spriteBatch);
                     break;
                 case WorldState.Level1:
                     level1.Draw(_spriteBatch);

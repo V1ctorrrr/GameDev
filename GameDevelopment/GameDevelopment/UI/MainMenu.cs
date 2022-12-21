@@ -10,30 +10,23 @@ using System.Threading.Tasks;
 
 namespace GameDevelopment.UI
 {
-    internal class MainMenu
+    internal static class MainMenu
     {
-        private Button tutorialButton = new Button(new Rectangle((Information.screenWidth / 2) - 100, 400, 175, 75), new Rectangle(112, 80, 31, 16), "Tutorial");
-        private Button level1Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 500, 175, 75), new Rectangle(112, 80, 31, 16),"Level1");
-        private Button level2Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 600, 175, 75), new Rectangle(112, 80, 31, 16), "Level2");
-        private Button level3Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 700, 175, 75), new Rectangle(112, 80, 31, 16), "Level3");
-        private Button exitButton = new Button(new Rectangle((Information.screenWidth / 2) - 100, 800, 175, 75), new Rectangle(112, 80, 31, 16), "Exit");
+        private static Button tutorialButton = new Button(new Rectangle((Information.screenWidth / 2) - 100, 400, 175, 75), new Rectangle(112, 80, 31, 16), "Tutorial");
+        private static Button level1Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 500, 175, 75), new Rectangle(112, 80, 31, 16),"Level1");
+        private static Button level2Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 600, 175, 75), new Rectangle(112, 80, 31, 16), "Level2");
+        private static Button level3Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 700, 175, 75), new Rectangle(112, 80, 31, 16), "Level3");
+        private static Button exitButton = new Button(new Rectangle((Information.screenWidth / 2) - 100, 800, 175, 75), new Rectangle(112, 80, 31, 16), "Exit");
 
-        private SpriteFont spriteFont;
-        private string text;
-        private Vector2 textPosition;
+        private static SpriteFont spriteFont;
+        private static Vector2 textPosition;
 
-        private Texture2D backgroundImage;
+        private static Texture2D backgroundImage;
 
-        public MainMenu() 
-        {
-            text = "Knights journey";
-            
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
+        public static void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(backgroundImage, new Rectangle(0, 0, Information.screenWidth, Information.screenHeight), new Rectangle(0, 0, 320, 200), Color.White, 0, new Vector2(0, 0), SpriteEffects.None, 1);
-            spriteBatch.DrawString(spriteFont, text, new Vector2(textPosition.X, textPosition.Y), Color.White,0,new Vector2(0,0),3,SpriteEffects.None,0);
+            spriteBatch.DrawString(spriteFont, "Knights Journey", new Vector2(textPosition.X, textPosition.Y), Color.White,0,new Vector2(0,0),3,SpriteEffects.None,0);
             tutorialButton.Draw(spriteBatch);
             level1Button.Draw(spriteBatch);
             level2Button.Draw(spriteBatch);
@@ -41,14 +34,13 @@ namespace GameDevelopment.UI
             exitButton.Draw(spriteBatch);
         }
 
-        public void Update(GameTime gameTime)
+        public static void Update(GameTime gameTime)
         {
             tutorialButton.Update(gameTime);
             level1Button.Update(gameTime);
             level2Button.Update(gameTime);
             level3Button.Update(gameTime);
             exitButton.Update(gameTime);
-
 
             if (tutorialButton.Clicked)
             {
@@ -67,10 +59,10 @@ namespace GameDevelopment.UI
                 Information.KnightsJourney.Exit();
             }
 
-            textPosition = new Vector2(Information.screenWidth / 2 - (spriteFont.MeasureString(text).X / 2)*3, 50);
+            textPosition = new Vector2(Information.screenWidth / 2 - (spriteFont.MeasureString("Knights Journey").X / 2)*3, 50);
         }
 
-        public void LoadContent(ContentManager Content)
+        public static void LoadContent(ContentManager Content)
         {
             tutorialButton.LoadContent(Content);
             level1Button.LoadContent(Content);
