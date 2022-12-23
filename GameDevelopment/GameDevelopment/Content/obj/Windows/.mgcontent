@@ -4,43 +4,21 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/background.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/border.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/health_bar_decoration.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/health_bar.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/heart.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Ghoul/Ghoul Sprite Sheet.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/coin2_20x20.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/flag animation.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/poção azul.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Background.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level1/pre.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level2/BIGPRE_ORIG_SIZE.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level3/BIGPRE_ORIG_SIZE.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level1/2.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level1/3.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level1/4.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level1/5.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level1/PRE_ORIG_SIZE.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level2/1.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level2/2.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level2/3_3.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level2/PRE_ORIG_SIZE.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level3/1_1.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level3/2.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level3/3.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Background/Level3/PRE_ORIG_SIZE.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Fonts/Font.spritefont</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/GUI.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Heart&amp;ManaUi.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/Mountain-Dusk.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/far-clouds.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/far-mountains.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/mountains.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/near-clouds.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/sky.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/trees.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Fonts/File.spritefont</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Boar/Hit-Sheet.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Boar/Idle-Sheet.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Boar/Run-Sheet.png</File>
-    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Ghoul/Ghoul Sprite Sheet.png</File>
+    <File>C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/1.png</File>
+    <File>C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/2.png</File>
+    <File>C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/3.png</File>
+    <File>C:/Users/dedec/Downloads/craftpix-net-665906-free-sky-with-clouds-background-pixel-art-set/Clouds/Clouds 3/4.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Hero/_Attack.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Hero/_CrouchAll.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Hero/_CrouchAttack.png</File>
@@ -56,13 +34,21 @@
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Idle.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Walk.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Tiles/Tiles.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Fonts/Font.spritefont</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/GUI.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/background.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/border.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/health_bar_decoration.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/health_bar.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/heart.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Heart&amp;ManaUi.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/Mountain-Dusk.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File>UI/Fonts/myFont.spritefont</File>
+    <File>UI/Death/1.png</File>
+    <File>UI/Death/2.png</File>
+    <File>UI/Death/3.png</File>
+    <File>UI/Death/4.png</File>
   </DestFiles>
 </SourceFileCollection>

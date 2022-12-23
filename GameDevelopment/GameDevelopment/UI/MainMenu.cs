@@ -18,7 +18,7 @@ namespace GameDevelopment.UI
         private static Button level3Button = new Button(new Rectangle((Information.screenWidth / 2) - 100, 700, 175, 75), new Rectangle(112, 80, 31, 16), "Level3");
         private static Button exitButton = new Button(new Rectangle((Information.screenWidth / 2) - 100, 800, 175, 75), new Rectangle(112, 80, 31, 16), "Exit");
 
-        private static SpriteFont spriteFont;
+        public static SpriteFont spriteFont;
         private static Vector2 textPosition;
 
         private static Texture2D backgroundImage;

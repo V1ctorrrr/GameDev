@@ -38,7 +38,11 @@
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/health_bar_decoration.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/health_bar.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/HealthBar/heart.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Heart&amp;ManaUi.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/MainMenu/Mountain-Dusk.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/coin2_20x20.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/flag animation.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/poção azul.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -52,6 +56,10 @@
     <File>UI/Death/2.png</File>
     <File>UI/Death/3.png</File>
     <File>UI/Death/4.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

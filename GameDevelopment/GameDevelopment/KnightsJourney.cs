@@ -30,7 +30,7 @@ namespace GameDevelopment
             // TODO: Add your initialization logic here
             base.Initialize();
 
-            Information.KnightsJourney= this;
+            Information.KnightsJourney = this;
             _graphics.PreferredBackBufferWidth = Information.screenWidth;
             _graphics.PreferredBackBufferHeight = Information.screenHeight;
             _graphics.ApplyChanges();
@@ -50,13 +50,13 @@ namespace GameDevelopment
 
             level1.LoadContent(Content);
             level1.AddHitboxes(GraphicsDevice);
-                /*
+                
             level2.LoadContent(Content);
             level2.AddHitboxes(GraphicsDevice);
-
+            
             level3.LoadContent(Content);
             level3.AddHitboxes(GraphicsDevice);
-                */
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -72,6 +72,8 @@ namespace GameDevelopment
                 MainMenu.Update(gameTime);
                 Death.Update(gameTime);
                 level1.Update(gameTime);
+                level2.Update(gameTime);
+                level3.Update(gameTime);
                 tutorial.Update(gameTime);
                 
                 firstUpdate= false;
@@ -90,8 +92,10 @@ namespace GameDevelopment
                         level1.Update(gameTime);
                         break;
                     case WorldState.Level2:
+                        level2.Update(gameTime);
                         break;
                     case WorldState.Level3:
+                        level3.Update(gameTime);
                         break;
                     case WorldState.Won:
                         break;
@@ -124,8 +128,10 @@ namespace GameDevelopment
                     level1.Draw(_spriteBatch);
                     break;
                 case WorldState.Level2:
+                    level2.Draw(_spriteBatch);
                     break;
                 case WorldState.Level3:
+                    level3.Draw(_spriteBatch);
                     break;
                 case WorldState.Won:
                     break;
@@ -135,7 +141,7 @@ namespace GameDevelopment
                 default:
                     break;
             }
-            
+            Information.Draw(_spriteBatch);
             _spriteBatch.End();
             
             base.Draw(gameTime);

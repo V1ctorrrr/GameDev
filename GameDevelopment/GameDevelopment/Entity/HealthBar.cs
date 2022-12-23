@@ -17,12 +17,14 @@ namespace GameDevelopment.Entity
     {
         private Rectangle healthBar;
         private List<Texture2D> heartTextures = new List<Texture2D>();
+        private Rectangle HP;
         private int amount;
         private Vector2 enemyPos;
         private int max;
         public HealthBar(Hero hero) 
         {
             amount = hero.Health / 5;
+            HP = new Rectangle(5, 20, 70, 50);
         }
 
         public HealthBar(IEnemy enemy) 
@@ -41,6 +43,7 @@ namespace GameDevelopment.Entity
                 spriteBatch.Draw(heartTextures[1], new Vector2(i * 20 * 4, 20), null, Color.White, 0, new Vector2(0, 0), 3, SpriteEffects.None, 0);
                 spriteBatch.Draw(heartTextures[2], new Vector2(i * 20 * 4, 20), null, Color.White, 0, new Vector2(0, 0), 3, SpriteEffects.None, 0);
             }
+            spriteBatch.Draw(heartTextures[5], HP, new Rectangle(2, 2, 16, 10), Color.White);
         }
 
         public void DrawHealthBar(SpriteBatch spriteBatch)
@@ -75,6 +78,7 @@ namespace GameDevelopment.Entity
             heartTextures.Add(Content.Load<Texture2D>("UI/HealthBar/heart"));
             heartTextures.Add(Content.Load<Texture2D>("UI/HealthBar/health_bar"));
             heartTextures.Add(Content.Load<Texture2D>("UI/HealthBar/health_bar_decoration"));
+            heartTextures.Add(Content.Load<Texture2D>("UI/Heart&ManaUi"));
         }
     }
 }

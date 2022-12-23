@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace GameDevelopment.Entity.Enemy
 {
-    internal class Boar : IEnemy
+    internal class Boar : IEnemy, IGameObject
     {
         #region Properties
         public List<Texture2D> textures = new List<Texture2D>();
@@ -71,10 +71,8 @@ namespace GameDevelopment.Entity.Enemy
             Death(gameTime);
             IsOnGround = false;
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            if (Attacking)
-            {
-                SwordHitbox[0] = new Rectangle((int)Hitboxes[2].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[2].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[2].Rectangle.Width -100, Hitboxes[2].Rectangle.Height);
-            }
+            SwordHitbox[0] = new Rectangle((int)Hitboxes[2].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[2].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[2].Rectangle.Width -100, Hitboxes[2].Rectangle.Height);
+            
             animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
         }

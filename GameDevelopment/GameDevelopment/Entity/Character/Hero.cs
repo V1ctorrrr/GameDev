@@ -33,7 +33,7 @@ namespace GameDevelopment.Entity.Character
         public Vector2 Position { get; set; }
         public Vector2 Speed { get; set; }
         public int jump { get; set; } = 0;
-        private int maxJump = 35;
+        public int maxJump { get; set; } = 35;
         private int jumpHeight;
         public KeyboardReader keyboardReader { get; set; } = new KeyboardReader();
         private MovementManager movementManager = new MovementManager();
@@ -85,7 +85,7 @@ namespace GameDevelopment.Entity.Character
         {
             if (!IsAlive) return;
             Attack(gameTime);
-            jumpHeight = maxJump - jump - (int)Information.Gravity;
+            
             Jump();
             Move();
             Hit(gameTime);
@@ -264,6 +264,7 @@ namespace GameDevelopment.Entity.Character
         }
         private void Jump()
         {
+            jumpHeight = maxJump - jump - (int)Information.Gravity;
             if (keyboardReader.hasJumped && !IsJumping && IsOnGround)
             {
                 textureCounter = 2;
@@ -286,6 +287,7 @@ namespace GameDevelopment.Entity.Character
             if (jump != maxJump) return;
             IsJumping = false;
             jump = 0;
+            maxJump = 35;
         }
         public void Hit(GameTime gameTime)
         {

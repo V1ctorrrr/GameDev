@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace GameDevelopment.Entity.Enemy
 {
-    internal class Skeleton:IEnemy
+    internal class Skeleton:IEnemy, IGameObject
     {
         #region Properties
         public List<Texture2D> textures = new List<Texture2D>();
@@ -177,7 +177,7 @@ namespace GameDevelopment.Entity.Enemy
 
             deathCounter += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Speed = new Vector2(0, 0);
-            if (!(deathCounter > 1.5)) return;
+            if (!(deathCounter > 1.2)) return;
 
             IsAlive = false;
             Speed = new Vector2(0, 0);
