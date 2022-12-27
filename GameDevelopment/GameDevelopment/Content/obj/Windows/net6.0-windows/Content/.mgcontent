@@ -25,11 +25,20 @@
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Hero/_Idle.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Hero/_Jump.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Hero/_Run.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/IceGolem/frost_guardian_free_192x128_SpriteSheet.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Attack.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Dead.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Hit.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Idle.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Skeleton/Skeleton Walk.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Death/mixkit-game-over-trombone-1940.wav</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Level1/Grasslands Theme.mp3</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Level2/Mushroom Theme.mp3</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Level3/Boss Theme.mp3</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/MainMenu/vgm-atmospheric-below.mp3</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Tutorial/Worldmap Theme.mp3</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Won/mixkit-video-game-win-2016.wav</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Tiles/Icecave tools and tileset.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Tiles/Tiles.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Fonts/Font.spritefont</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/GUI.png</File>
@@ -43,6 +52,11 @@
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/coin2_20x20.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/flag animation.png</File>
     <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/poção azul.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/PickUps/raw meats.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Won/1.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Won/2.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Won/3.png</File>
+    <File>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/UI/Won/4.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -56,6 +70,20 @@
     <File>UI/Death/2.png</File>
     <File>UI/Death/3.png</File>
     <File>UI/Death/4.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameDevelopment.Entity;
 using GameDevelopment.Entity.Character;
+using GameDevelopment.Entity.Enemy;
 using GameDevelopment.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -52,6 +53,12 @@ namespace GameDevelopment.Entity
             spriteBatch.Draw(heartTextures[3],healthBar,null,Color.White);
         }
 
+        public void DrawBossHealthBar(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(heartTextures[4], new Vector2(Information.screenWidth/2 - (heartTextures[3].Width * 6) + 16, 50), null, Color.White, 0, new Vector2(0, 0), 6, SpriteEffects.None, 0);
+            spriteBatch.Draw(heartTextures[3], healthBar, null, Color.White);
+        }
+
         public void Update(GameTime gameTime, Hero hero) 
         {
             amount = hero.Health / 5;
@@ -60,7 +67,16 @@ namespace GameDevelopment.Entity
         public void Update(GameTime gameTime, IEnemy enemy)
         {
             amount = enemy.Health / 5;
-            enemyPos.X = enemy.Position.X;
+            
+            if (enemy.Position.Y - enemyPos.Y > 30)
+                enemyPos = enemy.Position;
+            else
+                enemyPos.X = enemy.Position.X;
+
+            if (enemy.Position.Y - enemyPos.Y < 10)
+            {
+                enemyPos.Y -= 10;
+            }
 
             var temp = (heartTextures[3].Width * 2) / max;
 
@@ -69,6 +85,17 @@ namespace GameDevelopment.Entity
             else
                 healthBar = new Rectangle((int)enemy.Position.X + 28, (int)enemyPos.Y + 4, 0, 28);
 
+        }
+
+        public void Update(GameTime gameTime, IceGolem iceGolem)
+        {
+            amount = iceGolem.Health / 5;
+            var temp = (heartTextures[3].Width * 6) / max;
+
+            if (amount != 0)
+                healthBar = new Rectangle(Information.screenWidth / 2 - (heartTextures[3].Width * 4), 50, (heartTextures[3].Width * 6) - temp * (max - amount), 104);
+            else
+                healthBar = new Rectangle(Information.screenWidth / 2 - (heartTextures[3].Width * 4), 50, 0, 104);
         }
 
         public void LoadContent(ContentManager Content)

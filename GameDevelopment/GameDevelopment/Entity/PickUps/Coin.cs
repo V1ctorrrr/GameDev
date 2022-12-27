@@ -15,7 +15,7 @@ namespace GameDevelopment.Entity.PickUps
     {
         private Texture2D coinTexture;
         public Rectangle hitBox { get; set; }
-        public bool IsPicked = false;
+        internal bool IsPicked = false;
         public Vector2 Position { get; set; }
         private Animation animation = new Animation();
         public Coin(Vector2 Position)
@@ -31,6 +31,7 @@ namespace GameDevelopment.Entity.PickUps
 
         public void Update(GameTime gameTime)
         {
+            if (IsPicked) return;
             animation.Update(gameTime);
         }
 

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace GameDevelopment.UI
 {
+    //Bron voor soundtrack: https://gamefromscratch.com/monogame-tutorial-audio/
     internal static class MainMenu
     {
         private static Button tutorialButton = new Button(new Rectangle((Information.screenWidth / 2) - 100, 400, 175, 75), new Rectangle(112, 80, 31, 16), "Tutorial");

@@ -9,14 +9,17 @@ using System.Collections.Generic;
 using GameDevelopment.Entity;
 using GameDevelopment.Entity.PickUps;
 using GameDevelopment.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace GameDevelopment.Environment
 {
     internal class Level1: ILevel
     {
         public List<Block> blocks { get; set; }= new List<Block>();
-        private Texture2D tileSet;
+        private List<Texture2D> tileSet = new List<Texture2D>();
         private Texture2D _backgroundImage;
+        
         public int[,] gameBoard { get; set; } = new int[,]
         {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -101,9 +104,10 @@ namespace GameDevelopment.Environment
             {
                 enemy.LoadContent(Content);
             }
-            tileSet = Content.Load<Texture2D>("Tiles/Tiles");
+            tileSet.Add(Content.Load<Texture2D>("Tiles/Tiles"));
+            tileSet.Add(Content.Load<Texture2D>("Tiles/Icecave tools and tileset"));
             _backgroundImage = Content.Load<Texture2D>("Background/Level1/pre");
-            blocks = BlockFactory.CreateBlocks(gameBoard, blocks, tileSet);
+            BlockFactory.CreateBlocks(gameBoard, blocks, tileSet);
 
             foreach (var pickup in pickUps)
             {

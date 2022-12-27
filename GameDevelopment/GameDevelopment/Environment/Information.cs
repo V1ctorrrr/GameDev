@@ -17,7 +17,6 @@ namespace GameDevelopment
         public static int screenHeight = 1080;
         public static Random random= new Random();
         public static KnightsJourney KnightsJourney;
-        public static WorldState prevState;
         public static int Score = 0;
 
         public static void Draw(SpriteBatch spriteBatch)

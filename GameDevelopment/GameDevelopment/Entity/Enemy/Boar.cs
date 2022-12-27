@@ -84,6 +84,9 @@ namespace GameDevelopment.Entity.Enemy
             double delayBetweenStops = Information.random.NextDouble();
             int start = Information.random.Next(0, 2);
 
+            if (isTakingDamage) return;
+
+
             if (counter >= 1d / delayBetweenStops)
             {
                 counter = 0;

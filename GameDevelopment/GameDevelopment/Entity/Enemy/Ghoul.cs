@@ -75,7 +75,7 @@ namespace GameDevelopment.Entity.Enemy
             IsOnGround = false;
 
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            SwordHitbox[textureCounter] = new Rectangle(Hitboxes[textureCounter].Rectangle.X, Hitboxes[textureCounter].Rectangle.Y, 30, (texture.Height / 5 * scale) - 20);
+            SwordHitbox[textureCounter] = new Rectangle(Hitboxes[textureCounter].Rectangle.X + (int)SwordPosition.X, Hitboxes[textureCounter].Rectangle.Y + (int)SwordPosition.Y, 30, (texture.Height / 5 * scale) - 20);
             animation.Update(gameTime);
             healthBar.Update(gameTime, this);
         }
@@ -141,6 +141,9 @@ namespace GameDevelopment.Entity.Enemy
             if (!IsOnGround)
                 Position += new Vector2(0, Information.Gravity);
 
+            if (animation.counter > 3 && animation.counter < 8)
+                animation.counter = 0;
+
             Position += Speed;
         }
 
@@ -174,8 +177,6 @@ namespace GameDevelopment.Entity.Enemy
                 time = 0;
                 IsAttacking = false;
             }
-
-
         }
 
         public void Hit(GameTime gameTime)

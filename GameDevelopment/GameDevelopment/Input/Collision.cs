@@ -111,9 +111,10 @@ namespace GameDevelopment.Input
                     enemy.Hitboxes[enemy.textureCounter].Rectangle.Left < block.Rectangle.Left)
             {
                 if (enemy is Skeleton)
-                    tempPos.X = block.Rectangle.Left - enemy.Hitboxes[enemy.textureCounter].Rectangle.Width - 26;
+                    tempPos.X = block.Rectangle.Left - enemy.Hitboxes[enemy.textureCounter].Rectangle.Width-30;
                 else
                     tempPos.X = block.Rectangle.Left - enemy.Hitboxes[enemy.textureCounter].Rectangle.Width - enemy.HitboxPosition.X;
+
                 tempSpeed *= -1;
             }
             else if (enemy.Hitboxes[enemy.textureCounter].Rectangle.Left < block.Rectangle.Right &&
@@ -167,20 +168,22 @@ namespace GameDevelopment.Input
                 {
                     enemy.Attacking = false;
                 }
-
-                if (enemy.SwordHitbox[0].Intersects(hero.Hitboxes[hero.textureCounter].Rectangle) && enemy.IsAttacking)
-                {
-                    hero.DamageAmount = enemy.Damage;
-                    hero.Attacked = true;
-                }
-                else
-                {
-                    hero.Attacked = false;
-                }
             }
             else
             {
                 enemy.Attacking = false;
+            }
+
+            if (!(enemy.SwordHitbox[0].Intersects(hero.Hitboxes[hero.textureCounter].Rectangle) && enemy.IsAttacking)) return;
+
+            if (enemy.SwordHitbox[0].Intersects(hero.Hitboxes[hero.textureCounter].Rectangle) && enemy.IsAttacking)
+            {
+                hero.DamageAmount = enemy.Damage;
+                hero.Attacked = true;
+            }
+            else
+            {
+                hero.Attacked = false;
             }
         }
 
@@ -228,6 +231,15 @@ namespace GameDevelopment.Input
                 {
                     jumpPotion.IsPicked = true;
                     hero.maxJump = 50;
+                }
+            } else if (pickUp is Meat)
+            {
+                var meat = pickUp as Meat;
+
+                if (hero.Hitboxes[hero.textureCounter].Rectangle.Intersects(meat.hitBox) && !meat.IsPicked && hero.Health<20)
+                {
+                    meat.IsPicked = true;
+                    hero.Health += 5;
                 }
             }
         }

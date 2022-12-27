@@ -77,3 +77,22 @@ D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Deb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\PickUps\coin2_20x20.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\PickUps\flag animation.xnb
 D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\PickUps\poção azul.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\IceGolem\frost_guardian_free_192x128_SpriteSheet.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Tiles\Icecave tools and tileset.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\PickUps\raw meats.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Won\1.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Won\2.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Won\3.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\UI\Won\4.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\MainMenu\vgm-atmospheric-below.wma
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\MainMenu\vgm-atmospheric-below.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Level1\Grasslands Theme.wma
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Level1\Grasslands Theme.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Level2\Mushroom Theme.wma
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Level2\Mushroom Theme.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Level3\Boss Theme.wma
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Level3\Boss Theme.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Tutorial\Worldmap Theme.wma
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Tutorial\Worldmap Theme.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Death\mixkit-game-over-trombone-1940.xnb
+D:\School\Jaar 2\GameDev\GameDevelopment\GameDevelopment\GameDevelopment\bin\Debug\net6.0-windows\Content\Soundtrack\Won\mixkit-video-game-win-2016.xnb

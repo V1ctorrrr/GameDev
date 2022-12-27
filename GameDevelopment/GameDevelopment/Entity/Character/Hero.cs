@@ -23,7 +23,7 @@ namespace GameDevelopment.Entity.Character
         #region Properties
         //First texture = idle, then run, then jump, then fall,then crouch, then crouch walk, then attack, then crouch attack, then hit
         public List<Texture2D> textures = new List<Texture2D>();
-        private List<Animation> animations = new List<Animation>();
+        internal List<Animation> animations = new List<Animation>();
         public int textureCounter { get; set; } = 0;
         public SpriteEffects spriteEffect { get; set; }
         public bool IsAttacking { get; set; } = false;
@@ -39,7 +39,7 @@ namespace GameDevelopment.Entity.Character
         private MovementManager movementManager = new MovementManager();
         public List<Block> Hitboxes { get; set; } = new List<Block>();
         public List<Rectangle> SwordHitbox { get; set; } = new List<Rectangle>();
-        private Vector2 SwordPosition { get; set; }
+        public Vector2 SwordPosition { get; set; }
         public int swordBoxCounter { get; set; } = 0;
         private Texture2D HitboxTexture { get; set; }
         public Vector2 HitboxPosition { get; set; }
@@ -51,7 +51,7 @@ namespace GameDevelopment.Entity.Character
         private float deathCounter = 0;
         private float hitAnimationTime = 0;
         public bool Attacked { get; set; } = false;
-        private bool isTakingDamage = false;
+        internal bool isTakingDamage = false;
         public int DamageAmount { get; set; } = 0;
         public bool IsAlive { get; set; } = true;
         private HealthBar healthBar;
@@ -74,7 +74,8 @@ namespace GameDevelopment.Entity.Character
             spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), 2, spriteEffect, 0f);
             healthBar.DrawHearts(spriteBatch);
             //Draw Hitboxes
-            /*spriteBatch.Draw(HitboxTexture,Position + HitboxPosition,Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
+            /*
+            spriteBatch.Draw(HitboxTexture,Position + HitboxPosition,Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(0, 0), 1, spriteEffect, 0f);
             if (textureCounter==6||textureCounter==7)
             {
                 spriteBatch.Draw(HitboxTexture, Position + HitboxPosition + SwordPosition, SwordHitbox[swordBoxCounter], Color.Black, 0f, new Vector2(0, 0), 1, spriteEffect, 1f);
@@ -85,17 +86,16 @@ namespace GameDevelopment.Entity.Character
         {
             if (!IsAlive) return;
             Attack(gameTime);
-            
             Jump();
             Move();
             Hit(gameTime);
             Death(gameTime);
-            ChangeAnimation();
+            HeroAnimations.ChangeAnimation(this);
             IsOnGround = false;
+            Attacked= false;
 
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            if (IsAttacking)
-                SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width + 20, Hitboxes[swordBoxCounter].Rectangle.Height + 10);
+            SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width + 20, Hitboxes[swordBoxCounter].Rectangle.Height + 10);
             
             animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
@@ -109,121 +109,6 @@ namespace GameDevelopment.Entity.Character
 
             if (Position.Y>Information.screenHeight)
                 Health = 0;
-        }
-        public void ChangeAnimation()
-        {
-            if (!IsAttacking && !isTakingDamage)
-            {
-                if (!IsJumping)
-                {
-                    //Right
-                    if (keyboardReader.Direction == "left" && !IsCrouching)
-                    {
-                        textureCounter = 1;
-                        spriteEffect = SpriteEffects.FlipHorizontally;
-                        HitboxPosition = new Vector2(100, 82);
-                    }
-                    //Left
-                    else if (keyboardReader.Direction == "right" && !IsCrouching)
-                    {
-                        textureCounter = 1;
-                        spriteEffect = SpriteEffects.None;
-                        HitboxPosition = new Vector2(82, 82);
-                    }
-                    //Idle
-                    else if (!keyboardReader.Pressed)
-                    {
-                        textureCounter = 0;
-                        if (spriteEffect == SpriteEffects.FlipHorizontally)
-                        {
-                            HitboxPosition = new Vector2(102, 82);
-                        }
-                        else if (spriteEffect == SpriteEffects.None)
-                        {
-                            HitboxPosition = new Vector2(82, 82);
-                        }
-                    }
-                    //Crouch
-                    else if (keyboardReader.Crouch && keyboardReader.Direction == "none")
-                    {
-                        IsCrouching = true;
-                        textureCounter = 4;
-                        if (animations[textureCounter].counter < 3)
-                        {
-                            animations[textureCounter].counter = 1;
-                        }
-                        if (spriteEffect == SpriteEffects.FlipHorizontally)
-                        {
-                            HitboxPosition = new Vector2(98, 102);
-                        }
-                        else if (spriteEffect == SpriteEffects.None)
-                        {
-                            HitboxPosition = new Vector2(87, 104);
-                        }
-                    }
-                    //Crouch walk left
-                    else if (keyboardReader.Crouch && keyboardReader.Direction == "left")
-                    {
-                        IsCrouching = true;
-                        textureCounter = 5;
-                        spriteEffect = SpriteEffects.FlipHorizontally;
-                        HitboxPosition = new Vector2(98, 104);
-                    }
-                    //Crouch walk right
-                    else if (keyboardReader.Crouch && keyboardReader.Direction == "right")
-                    {
-                        IsCrouching = true;
-                        textureCounter = 5;
-                        spriteEffect = SpriteEffects.None;
-                        HitboxPosition = new Vector2(87, 104);
-                    }
-                    else if (!keyboardReader.Crouch)
-                    {
-                        IsCrouching = false;
-                    }
-                    if (IsCrouching)
-                    {
-                        Speed = new Vector2(2, Speed.Y);
-                    }
-                    else if (!IsCrouching)
-                    {
-                        Speed = new Vector2(4, Speed.Y);
-                    }
-                    else if (!IsOnGround)
-                    {
-                        textureCounter = 3;
-                        HitboxPosition = new Vector2(82, 82);
-                    }
-                }
-            }
-
-
-            //attack move hitbox left/right with direction
-            if (spriteEffect == SpriteEffects.FlipHorizontally && textureCounter == 6)
-            {
-                HitboxPosition = new Vector2(70, 70);
-                SwordPosition = new Vector2(-70, 0);
-            }
-            else if (spriteEffect == SpriteEffects.None && textureCounter == 6)
-            {
-                HitboxPosition = new Vector2(90, 70);
-                SwordPosition = new Vector2(70, 0);
-            }
-            else if (spriteEffect == SpriteEffects.FlipHorizontally && textureCounter == 7)
-            {
-                HitboxPosition = new Vector2(90, 104);
-                SwordPosition = new Vector2(-60, 0);
-            }
-            else if (spriteEffect == SpriteEffects.None && textureCounter == 7)
-            {
-                HitboxPosition = new Vector2(60, 104);
-                SwordPosition = new Vector2(80, 0);
-            }
-
-            if (IsOnGround==false && !IsJumping)
-            {
-                textureCounter = 3;
-            }
         }
         private void Attack(GameTime gameTime)
         {

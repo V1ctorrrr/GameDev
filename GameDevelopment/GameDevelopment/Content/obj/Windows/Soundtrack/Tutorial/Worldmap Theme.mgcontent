@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Tutorial/Worldmap Theme.mp3</SourceFile>
+  <SourceTime>2022-12-27T09:53:15.1394433+01:00</SourceTime>
+  <DestFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/Soundtrack/Tutorial/Worldmap Theme.xnb</DestFile>
+  <DestTime>2022-12-27T09:56:06.9514027+01:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/Soundtrack/Tutorial/Worldmap Theme.wma</string>
+  </BuildOutput>
+</PipelineBuildEvent>

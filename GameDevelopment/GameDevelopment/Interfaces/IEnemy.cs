@@ -19,6 +19,7 @@ namespace GameDevelopment.Interfaces
         public bool IsOnGround { get; set; }
         public int Health { get; set; }
         public int Damage { get; set; }
+        public bool IsAlive { get; set; }
         public int DamageAmount { get; set; }
         public bool Attacked { get; set; }
         public bool IsAttacking { get; set; }
@@ -33,6 +34,7 @@ namespace GameDevelopment.Interfaces
         void Move(GameTime gameTime);
         void Hit(GameTime gameTime);
         void Death(GameTime gameTime);
+        void Attack(GameTime gameTime);
         void LoadContent(ContentManager Content);
         void AddHitboxes(GraphicsDevice GraphicsDevice);
     }

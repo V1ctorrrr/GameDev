@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/Level2/Dodge 3db.wav</SourceFile>
+  <SourceTime>2022-12-26T11:46:41.706764+01:00</SourceTime>
+  <DestFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/Soundtrack/Level2/Dodge 3db.xnb</DestFile>
+  <DestTime>2022-12-26T12:04:15.2050564+01:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

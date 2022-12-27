@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/Soundtrack/MainMenu/vgm-atmospheric-below.mp3</SourceFile>
+  <SourceTime>2022-12-26T11:43:43.7587859+01:00</SourceTime>
+  <DestFile>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/Soundtrack/MainMenu/vgm-atmospheric-below.xnb</DestFile>
+  <DestTime>2022-12-27T09:56:06.7133798+01:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>D:/School/Jaar 2/GameDev/GameDevelopment/GameDevelopment/GameDevelopment/Content/bin/Windows/Soundtrack/MainMenu/vgm-atmospheric-below.wma</string>
+  </BuildOutput>
+</PipelineBuildEvent>

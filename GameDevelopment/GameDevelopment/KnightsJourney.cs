@@ -1,4 +1,5 @@
 ﻿using GameDevelopment.Environment;
+using GameDevelopment.Soundtrack;
 using GameDevelopment.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,12 +13,12 @@ namespace GameDevelopment
         private SpriteBatch _spriteBatch;
 
         private bool firstUpdate = true;
-
         internal Level1 level1 = new Level1();
         internal Level2 level2 = new Level2();
         internal Level3 level3 = new Level3();
         internal Tutorial tutorial = new Tutorial();
         public WorldState worldState = WorldState.MainMenu;
+
         public KnightsJourney()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -30,20 +31,21 @@ namespace GameDevelopment
             // TODO: Add your initialization logic here
             base.Initialize();
 
-            Information.KnightsJourney = this;
+            _graphics.IsFullScreen = true;
             _graphics.PreferredBackBufferWidth = Information.screenWidth;
             _graphics.PreferredBackBufferHeight = Information.screenHeight;
             _graphics.ApplyChanges();
-
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
+            Information.KnightsJourney = this;
             MainMenu.LoadContent(Content);
             Death.LoadContent(Content);
+            Won.LoadContent(Content);
+            MusicManager.LoadContent(Content);
 
             tutorial.LoadContent(Content);
             tutorial.AddHitboxes(GraphicsDevice);
@@ -56,7 +58,6 @@ namespace GameDevelopment
             
             level3.LoadContent(Content);
             level3.AddHitboxes(GraphicsDevice);
-            
         }
 
         protected override void Update(GameTime gameTime)
@@ -64,13 +65,12 @@ namespace GameDevelopment
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 worldState= WorldState.MainMenu;
             
-            if (worldState != WorldState.Death)
-                Information.prevState = worldState;
 
             if (firstUpdate)
             {
                 MainMenu.Update(gameTime);
                 Death.Update(gameTime);
+                Won.Update(gameTime);
                 level1.Update(gameTime);
                 level2.Update(gameTime);
                 level3.Update(gameTime);
@@ -98,6 +98,7 @@ namespace GameDevelopment
                         level3.Update(gameTime);
                         break;
                     case WorldState.Won:
+                        Won.Update(gameTime);
                         break;
                     case WorldState.Tutorial:
                         tutorial.Update(gameTime);
@@ -106,7 +107,8 @@ namespace GameDevelopment
                         break;
                 }
             }
-            
+
+            MusicManager.Play();
             base.Update(gameTime);
         }
 
@@ -126,22 +128,28 @@ namespace GameDevelopment
                     break;
                 case WorldState.Level1:
                     level1.Draw(_spriteBatch);
+                    Information.Draw(_spriteBatch);
                     break;
                 case WorldState.Level2:
                     level2.Draw(_spriteBatch);
+                    Information.Draw(_spriteBatch);
                     break;
                 case WorldState.Level3:
                     level3.Draw(_spriteBatch);
+                    Information.Draw(_spriteBatch);
                     break;
                 case WorldState.Won:
+                    Won.Draw(_spriteBatch);
+                    Information.Draw(_spriteBatch);
                     break;
                 case WorldState.Tutorial:
                     tutorial.Draw(_spriteBatch);
+                    Information.Draw(_spriteBatch);
                     break;
                 default:
                     break;
             }
-            Information.Draw(_spriteBatch);
+            
             _spriteBatch.End();
             
             base.Draw(gameTime);

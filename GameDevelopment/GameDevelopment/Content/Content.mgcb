@@ -265,6 +265,18 @@
 /processorParam:TextureFormat=Color
 /build:Hero/_Run.png
 
+#begin IceGolem/frost_guardian_free_192x128_SpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:IceGolem/frost_guardian_free_192x128_SpriteSheet.png
+
 #begin Skeleton/Skeleton Attack.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -324,6 +336,60 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Skeleton/Skeleton Walk.png
+
+#begin Soundtrack/Death/mixkit-game-over-trombone-1940.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Death/mixkit-game-over-trombone-1940.wav
+
+#begin Soundtrack/Level1/Grasslands Theme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Level1/Grasslands Theme.mp3
+
+#begin Soundtrack/Level2/Mushroom Theme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Level2/Mushroom Theme.mp3
+
+#begin Soundtrack/Level3/Boss Theme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Level3/Boss Theme.mp3
+
+#begin Soundtrack/MainMenu/vgm-atmospheric-below.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/MainMenu/vgm-atmospheric-below.mp3
+
+#begin Soundtrack/Tutorial/Worldmap Theme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Tutorial/Worldmap Theme.mp3
+
+#begin Soundtrack/Won/mixkit-video-game-win-2016.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Soundtrack/Won/mixkit-video-game-win-2016.wav
+
+#begin Tiles/Icecave tools and tileset.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tiles/Icecave tools and tileset.png
 
 #begin Tiles/Tiles.png
 /importer:TextureImporter
@@ -478,4 +544,64 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:UI/PickUps/poção azul.png
+
+#begin UI/PickUps/raw meats.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/PickUps/raw meats.png
+
+#begin UI/Won/1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Won/1.png
+
+#begin UI/Won/2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Won/2.png
+
+#begin UI/Won/3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Won/3.png
+
+#begin UI/Won/4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:UI/Won/4.png
 

@@ -47,7 +47,7 @@ namespace GameDevelopment.Entity.Enemy
             Position = position;
             Speed = new Vector2(2f, 0);
             HitboxPosition = new Vector2(0, 15);
-            SwordPosition = new Vector2(53,0);
+            
             healthBar = new HealthBar(this);
         }
 
@@ -59,8 +59,7 @@ namespace GameDevelopment.Entity.Enemy
                 healthBar.DrawHealthBar(spriteBatch);
                 //Draw Hitboxes
                 //spriteBatch.Draw(HitboxTexture, Position + HitboxPosition, Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(), 1, spriteEffect, 0f);
-                //if (IsAttacking)
-                    //spriteBatch.Draw(HitboxTexture, Position + HitboxPosition + SwordPosition, SwordHitbox[swordBoxCounter], Color.Black, 0f, new Vector2(0, 0), 1, spriteEffect, 1f);
+                //spriteBatch.Draw(HitboxTexture, Position + HitboxPosition + SwordPosition, SwordHitbox[swordBoxCounter], Color.Black, 0f, new Vector2(0, 0), 1, spriteEffect, 1f);
             }
         }
 
@@ -72,9 +71,9 @@ namespace GameDevelopment.Entity.Enemy
             Hit(gameTime);
             Death(gameTime);
             IsOnGround = false;
+
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            if (IsAttacking)
-                SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width+10, Hitboxes[swordBoxCounter].Rectangle.Height+5);
+            SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width+10, Hitboxes[swordBoxCounter].Rectangle.Height+5);
             animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
         }
@@ -179,6 +178,8 @@ namespace GameDevelopment.Entity.Enemy
             Speed = new Vector2(0, 0);
             if (!(deathCounter > 1.2)) return;
 
+            textureCounter = 4;
+            animations[textureCounter].counter = 13;
             IsAlive = false;
             Speed = new Vector2(0, 0);
         }
@@ -195,7 +196,7 @@ namespace GameDevelopment.Entity.Enemy
             if (AttackDirection == 'L')
             {
                 spriteEffect = SpriteEffects.FlipHorizontally;
-                HitboxPosition= new Vector2(65, 15);
+                HitboxPosition= new Vector2(65, 24);
                 SwordPosition= new Vector2(-53, 0);
             } 
             else if (AttackDirection == 'R')
@@ -252,6 +253,7 @@ namespace GameDevelopment.Entity.Enemy
             Hitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(1, 1, textures[4].Width / 11 + 20, textures[4].Height + 50), new Rectangle(), Color.DarkCyan));
 
             SwordHitbox.Add(new Rectangle((int)Hitboxes[2].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[2].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[2].Rectangle.Width - 50, Hitboxes[2].Rectangle.Height - 15));
+            SwordPosition = new Vector2(53, 0);
         }
     }
 }
