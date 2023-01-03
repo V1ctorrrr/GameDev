@@ -8,6 +8,7 @@ using GameDevelopment.Entity;
 using GameDevelopment.Entity.Character;
 using GameDevelopment.Entity.Enemy;
 using GameDevelopment.Interfaces;
+using GameDevelopment.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

@@ -4,6 +4,7 @@ using GameDevelopment.Entity.PickUps;
 using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Input;
 using GameDevelopment.Interfaces;
+using GameDevelopment.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;

@@ -14,6 +14,7 @@ using GameDevelopment.Entity.PickUps;
 using GameDevelopment.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using GameDevelopment.UI;
 
 namespace GameDevelopment.Environment
 {

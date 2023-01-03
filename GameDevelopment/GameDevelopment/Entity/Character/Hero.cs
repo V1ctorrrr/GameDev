@@ -3,6 +3,7 @@ using GameDevelopment.Environment;
 using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Input;
 using GameDevelopment.Interfaces;
+using GameDevelopment.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -95,7 +96,11 @@ namespace GameDevelopment.Entity.Character
             Attacked= false;
 
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width + 20, Hitboxes[swordBoxCounter].Rectangle.Height + 10);
+            if (textureCounter==6)
+                SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width + 20, Hitboxes[swordBoxCounter].Rectangle.Height + 10);
+            else if(textureCounter==7)
+                SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width + 20, Hitboxes[swordBoxCounter].Rectangle.Height - 20);
+            
             
             animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
@@ -211,6 +216,7 @@ namespace GameDevelopment.Entity.Character
             IsAlive = false;
             Speed = new Vector2(0, 0);
             Information.KnightsJourney.worldState = WorldState.Death;
+            Information.Score= 0;
         }
         public void LoadContent(ContentManager Content)
         {

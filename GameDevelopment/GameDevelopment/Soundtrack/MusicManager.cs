@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameDevelopment.Environment;
+using GameDevelopment.UI;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
@@ -27,6 +28,9 @@ namespace GameDevelopment.Soundtrack
         private static bool wonPlaying = false;
         public static void Play()
         {
+            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.IsRepeating = true;
+
             if (Information.KnightsJourney.worldState==WorldState.MainMenu && !IsPlaying[0])
             {
                 MediaPlayer.Play(soundtracks[0]);
@@ -72,14 +76,15 @@ namespace GameDevelopment.Soundtrack
                 deathPlaying = false;
                 wonPlaying = false;
             }
-            MediaPlayer.Volume = 0.1f;
-            MediaPlayer.IsRepeating = true;
 
             if (Information.KnightsJourney.worldState == WorldState.Death && !deathPlaying)
             {
                 deathPlaying= true;
                 MediaPlayer.Stop();
                 death.Play();
+                wonPlaying = false;
+                for (int i = 0; i < IsPlaying.Count; i++)
+                    IsPlaying[i] = false;
             }
 
             if (Information.KnightsJourney.worldState == WorldState.Won && !wonPlaying)
@@ -87,6 +92,9 @@ namespace GameDevelopment.Soundtrack
                 wonPlaying = true;
                 MediaPlayer.Stop();
                 won.Play();
+                deathPlaying= false;
+                for (int i = 0; i < IsPlaying.Count; i++)
+                    IsPlaying[i] = false;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using GameDevelopment.animations;
 using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Interfaces;
+using GameDevelopment.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,40 +10,10 @@ using System.Collections.Generic;
 
 namespace GameDevelopment.Entity.Enemy
 {
-    internal class Skeleton:IEnemy, IGameObject
+    internal class Skeleton: Enemy,IEnemy, IGameObject
     {
-        #region Properties
-        public List<Texture2D> textures = new List<Texture2D>();
-        private List<Animation> animations = new List<Animation>();
-        private int scale = 3;
-        public int textureCounter { get; set; } = 0;
-        public SpriteEffects spriteEffect { get; set; } = SpriteEffects.None;
-        public Vector2 Position { get; set; }
-        public Vector2 Speed { get; set; }
-        public List<Block> Hitboxes { get; set; } = new List<Block>();
-        private Texture2D HitboxTexture { get; set; }
-        public Vector2 HitboxPosition { get; set; }
-        public bool IsOnGround { get; set; }
-        public int Health { get; set; } = 20;
-        public int Damage { get; set; } = 5;
-        public bool IsAlive { get; set; } = true;
-        private bool isTakingDamage = false;
-        public bool IsAttacking { get; set; } = false;
-        public bool Attacking { get; set; } = true;
-        public bool Attacked { get; set; } = false;
-        private double time = 1;
-        private double counter = 0;
-        public int DamageAmount { get; set; } = 0;
-        private float timeSinceInvincibility = 3f;
-        private float deathCounter = 0;
-        private float hitAnimationTime = 0;
-        public List<Rectangle> SwordHitbox { get; set; } = new List<Rectangle>();
-        public Vector2 SwordPosition { get; set; }
-        public int swordBoxCounter { get; set; } = 0;
-        public char AttackDirection { get; set; } = 'N';
-        private HealthBar healthBar;
-        #endregion
-        public Skeleton(Vector2 position)
+        
+        public Skeleton(Vector2 position): base(position)
         {
             Position = position;
             Speed = new Vector2(2f, 0);
@@ -51,7 +22,7 @@ namespace GameDevelopment.Entity.Enemy
             healthBar = new HealthBar(this);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             if (IsAlive)
             {
@@ -63,7 +34,7 @@ namespace GameDevelopment.Entity.Enemy
             }
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (!IsAlive) return;
             Attack(gameTime);
@@ -73,12 +44,12 @@ namespace GameDevelopment.Entity.Enemy
             IsOnGround = false;
 
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            SwordHitbox[swordBoxCounter] = new Rectangle((int)Hitboxes[swordBoxCounter].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[swordBoxCounter].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[swordBoxCounter].Rectangle.Width+10, Hitboxes[swordBoxCounter].Rectangle.Height+5);
+            SwordHitbox[0] = new Rectangle((int)Hitboxes[0].Rectangle.X + (int)SwordPosition.X, (int)Hitboxes[0].Rectangle.Y + (int)SwordPosition.Y, Hitboxes[0].Rectangle.Width+10, Hitboxes[0].Rectangle.Height+5);
             animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
         }
 
-        public void Move(GameTime gameTime)
+        public override void Move(GameTime gameTime)
         {
             if (IsAttacking) return;
             if (isTakingDamage) return;
@@ -136,7 +107,7 @@ namespace GameDevelopment.Entity.Enemy
                 Position += new Vector2(0, Information.Gravity);
         }
 
-        public void Hit(GameTime gameTime)
+        public override void Hit(GameTime gameTime)
         {
             timeSinceInvincibility += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -146,6 +117,8 @@ namespace GameDevelopment.Entity.Enemy
                 Health -= DamageAmount;
                 isTakingDamage = true;
             }
+
+            if (!isTakingDamage) return;
 
             if (!isTakingDamage) return;
 
@@ -167,7 +140,7 @@ namespace GameDevelopment.Entity.Enemy
             }
         }
 
-        public void Death(GameTime gameTime)
+        public override void Death(GameTime gameTime)
         {
             if (Health > 0) return;
 
@@ -184,7 +157,7 @@ namespace GameDevelopment.Entity.Enemy
             Speed = new Vector2(0, 0);
         }
 
-        public void Attack(GameTime gameTime)
+        public override void Attack(GameTime gameTime)
         {
             time += gameTime.ElapsedGameTime.TotalSeconds;
             if (Attacking)
@@ -222,7 +195,7 @@ namespace GameDevelopment.Entity.Enemy
             }            
         }
 
-        public void LoadContent(ContentManager Content)
+        public override void LoadContent(ContentManager Content)
         {
             textures.Add(Content.Load<Texture2D>("Skeleton/Skeleton Idle"));
             textures.Add(Content.Load<Texture2D>("Skeleton/Skeleton Walk"));
@@ -241,7 +214,7 @@ namespace GameDevelopment.Entity.Enemy
             healthBar.LoadContent(Content);
         }
 
-        public void AddHitboxes(GraphicsDevice GraphicsDevice)
+        public override void AddHitboxes(GraphicsDevice GraphicsDevice)
         {
             HitboxTexture = new Texture2D(GraphicsDevice, 1, 1);
             HitboxTexture.SetData(new[] { Color.White });

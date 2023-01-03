@@ -1,6 +1,7 @@
 ﻿using GameDevelopment.animations;
 using GameDevelopment.Environment.BuildingBlocks;
 using GameDevelopment.Interfaces;
+using GameDevelopment.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,59 +13,28 @@ using System.Threading.Tasks;
 
 namespace GameDevelopment.Entity.Enemy
 {
-    internal class Ghoul : IEnemy, IGameObject
+    internal class Ghoul : Enemy, IEnemy, IGameObject
     {
-        #region Properties
-        public Texture2D texture;
-        private Animation animation = new Animation();
-        private int scale = 3;
-        public int textureCounter { get; set; } = 0;
-        public SpriteEffects spriteEffect { get; set; } = SpriteEffects.None;
-        public Vector2 Position { get; set; }
-        public Vector2 Speed { get; set; }
-        private Texture2D HitboxTexture { get; set; }
-        public Vector2 HitboxPosition { get; set; }
-        public bool IsOnGround { get; set; }
-        public int Health { get; set; } = 20;
-        public int Damage { get; set; } = 5;
-        public bool IsAlive { get; set; } = true;
-        public List<Block> Hitboxes { get; set; } = new List<Block>();
-        public int DamageAmount { get; set; } = 5;
-        public bool Attacked { get; set; }
-        public bool IsAttacking { get; set; } = false;
-        public bool Attacking { get; set; }
-        public char AttackDirection { get; set; }
-        private bool isTakingDamage = false;
-        private float timeSinceInvincibility = 3f;
-        private float deathCounter = 0;
-        private float hitAnimationTime = 0;
-        private double time = 1;
-        public List<Rectangle> SwordHitbox { get; set; } = new List<Rectangle>();
-        public Vector2 SwordPosition { get; set; }
-
-        private double counter = 0;
-        private HealthBar healthBar;
-        #endregion
-        public Ghoul(Vector2 Position)
+        public Ghoul(Vector2 Position): base(Position)
         {
-            this.Position= Position;
             Speed = new Vector2(2f, 2f);
+            textureCounter= 0;
             HitboxPosition = new Vector2(5, 15);
             healthBar = new HealthBar(this);
         }
 
-        public void Draw(SpriteBatch spritebatch)
+        public override void Draw(SpriteBatch spritebatch)
         {
             if (!IsAlive) return;
 
-            spritebatch.Draw(texture, Position, animation.CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
+            spritebatch.Draw(textures[0], Position, animations[0].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
             healthBar.DrawHealthBar(spritebatch);
             //Hitboxes
             //spritebatch.Draw(HitboxTexture, Position + HitboxPosition, Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(), 1, SpriteEffects.None, 0f);
             //spritebatch.Draw(HitboxTexture, Position + HitboxPosition + SwordPosition, SwordHitbox[0], Color.Green, 0f, new Vector2(), 1, SpriteEffects.None, 0f);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             if (!IsAlive) return;
 
@@ -75,12 +45,12 @@ namespace GameDevelopment.Entity.Enemy
             IsOnGround = false;
 
             Hitboxes[textureCounter].Rectangle = new Rectangle((int)Position.X + (int)HitboxPosition.X, (int)Position.Y + (int)HitboxPosition.Y, Hitboxes[textureCounter].Rectangle.Width, Hitboxes[textureCounter].Rectangle.Height);
-            SwordHitbox[textureCounter] = new Rectangle(Hitboxes[textureCounter].Rectangle.X + (int)SwordPosition.X, Hitboxes[textureCounter].Rectangle.Y + (int)SwordPosition.Y, 30, (texture.Height / 5 * scale) - 20);
-            animation.Update(gameTime);
+            SwordHitbox[textureCounter] = new Rectangle(Hitboxes[textureCounter].Rectangle.X + (int)SwordPosition.X, Hitboxes[textureCounter].Rectangle.Y + (int)SwordPosition.Y, 30, (textures[textureCounter].Height / 5 * scale) - 20);
+            animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
         }
 
-        public void Move(GameTime gameTime)
+        public override void Move(GameTime gameTime)
         {
             counter += gameTime.ElapsedGameTime.TotalSeconds;
             double delayBetweenStops = Information.random.NextDouble();
@@ -94,19 +64,19 @@ namespace GameDevelopment.Entity.Enemy
                 counter = 0;
                 if (IsAlive)
                 {
-                    if (animation.counter >= 8 && animation.counter <= 15)
+                    if (animations[textureCounter].counter >= 8 && animations[textureCounter].counter <= 15)
                     {
                         Speed = new Vector2(0, 0);
-                        animation.counter = 0;
+                        animations[textureCounter].counter = 0;
                     }
-                    else if (animation.counter<=3)
+                    else if (animations[textureCounter].counter<=3)
                     {
                         if (start == 0)
                             Speed = new Vector2(2, 0);
                         else
                             Speed = new Vector2(-2, 0);
 
-                        animation.counter = 8;
+                        animations[textureCounter].counter = 8;
                     }
                 }
             }
@@ -115,49 +85,50 @@ namespace GameDevelopment.Entity.Enemy
             {
                 spriteEffect = SpriteEffects.FlipHorizontally;
                 SwordPosition = new Vector2(-30,0);
-                if (animation.counter>=15)
+                if (animations[textureCounter].counter>=15)
                 {
-                    animation.counter = 8;
+                    animations[textureCounter].counter = 8;
                 }
             }
             else if (Speed.X >= 0)
             {
                 spriteEffect = SpriteEffects.None;
                 SwordPosition= new Vector2(65,0);
-                if (animation.counter >= 15)
+                if (animations[textureCounter].counter >= 15)
                 {
-                    animation.counter = 8;
+                    animations[textureCounter].counter = 8;
                 }
             }
 
             if (Speed.X == 0)
             {
-                if (animation.counter>=4)
+                if (animations[textureCounter].counter>=4)
                 {
-                    animation.counter = 0;
+                    animations[textureCounter].counter = 0;
                 }
             }
+
+            if (animations[textureCounter].counter > 3 && animations[textureCounter].counter < 8)
+                animations[textureCounter].counter = 0;
 
             if (!IsOnGround)
                 Position += new Vector2(0, Information.Gravity);
 
-            if (animation.counter > 3 && animation.counter < 8)
-                animation.counter = 0;
-
             Position += Speed;
         }
 
-        public void Attack(GameTime gameTime)
+        public override void Attack(GameTime gameTime)
         {
             time += gameTime.ElapsedGameTime.TotalSeconds;
+            if (isTakingDamage) return;
             if (Attacking)
                 IsAttacking = true;
 
             if (!IsAttacking) return;
 
-            if (animation.counter < 15)
-                animation.counter = 15;
-            else if(animation.counter > 21 && animation.counter<32)
+            if (animations[textureCounter].counter < 15)
+                animations[textureCounter].counter = 15;
+            else if(animations[textureCounter].counter > 21 && animations[textureCounter].counter<32)
                 time = 1;
 
             if (AttackDirection == 'L')
@@ -173,13 +144,13 @@ namespace GameDevelopment.Entity.Enemy
 
             if (time >= 1)
             {
-                animation.counter = 0;
+                animations[textureCounter].counter = 0;
                 time = 0;
                 IsAttacking = false;
             }
         }
 
-        public void Hit(GameTime gameTime)
+        public override void Hit(GameTime gameTime)
         {
             timeSinceInvincibility += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -192,18 +163,18 @@ namespace GameDevelopment.Entity.Enemy
 
             if (!isTakingDamage) return;
 
-            animation.fps = 5;
-            if (animation.counter < 24)
+            animations[textureCounter].fps = 5;
+            if (animations[textureCounter].counter < 24)
             {
-                animation.counter = 24;
+                animations[textureCounter].counter = 24;
             }
 
             if (hitAnimationTime <= 1)
             {
-                if (animation.counter >= 27 && animation.counter <= 31)
+                if (animations[textureCounter].counter >= 27 && animations[textureCounter].counter <= 31)
                 {
                     hitAnimationTime = 1;
-                    animation.counter = 0;
+                    animations[textureCounter].counter = 0;
                 }
                 else
                 { 
@@ -213,44 +184,44 @@ namespace GameDevelopment.Entity.Enemy
             else
             {
                 hitAnimationTime = 0;
-                animation.counter = 0;
+                animations[textureCounter].counter = 0;
                 isTakingDamage = false;
-                animation.fps = 15;
+                animations[textureCounter].fps = 15;
             }
         }
 
-        public void Death(GameTime gameTime)
+        public override void Death(GameTime gameTime)
         {
             if (Health > 0) return;
 
-            if (animation.counter<32)
-                animation.counter = 32;            
+            if (animations[textureCounter].counter<32)
+                animations[textureCounter].counter = 32;
 
             deathCounter += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Speed = new Vector2(0, 0);
 
-            if (!(deathCounter > 1)) return;
-
+            if (!(deathCounter > 1.2)) return;
             IsAlive = false;
             Speed = new Vector2(0, 0);
         }
 
-        public void LoadContent(ContentManager Content)
+        public override void LoadContent(ContentManager Content)
         {
-            texture = Content.Load<Texture2D>("Ghoul/Ghoul Sprite Sheet");
-            animation.GetFramesFromTextureProperties(texture.Width, texture.Height, 8, 5);
-            animation.fps = 15;
+            textures.Add(Content.Load<Texture2D>("Ghoul/Ghoul Sprite Sheet"));
+            animations.Add(new Animation());
+            animations[textureCounter].GetFramesFromTextureProperties(textures[textureCounter].Width, textures[textureCounter].Height, 8, 5);
+            animations[textureCounter].fps = 15;
             healthBar.LoadContent(Content);
         }
 
-        public void AddHitboxes(GraphicsDevice GraphicsDevice)
+        public override void AddHitboxes(GraphicsDevice GraphicsDevice)
         {
             HitboxTexture = new Texture2D(GraphicsDevice, 1, 1);
             HitboxTexture.SetData(new[] { Color.White });
 
-            Hitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(1,1,(texture.Width/8*scale)-30,(texture.Height/5*scale)-20), new Rectangle(),Color.White));
+            Hitboxes.Add(new Block(new Texture2D(GraphicsDevice, 1, 1), new Rectangle(1, 1, (textures[textureCounter].Width / 8 * scale) - 30, (textures[textureCounter].Height/5*scale)-20), new Rectangle(),Color.White));
             HitboxPosition= new Vector2(20,20);
-            SwordHitbox.Add(new Rectangle(Hitboxes[textureCounter].Rectangle.X, Hitboxes[textureCounter].Rectangle.Y,30, (texture.Height / 5 * scale) - 20));
+            SwordHitbox.Add(new Rectangle(Hitboxes[textureCounter].Rectangle.X, Hitboxes[textureCounter].Rectangle.Y,30, (textures[textureCounter].Height / 5 * scale) - 20));
             SwordPosition = new Vector2(65,0);
         }
     }
