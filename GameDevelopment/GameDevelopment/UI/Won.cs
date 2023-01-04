@@ -27,8 +27,8 @@ namespace GameDevelopment.UI
             }
             MainMenuButton.Draw(spriteBatch);
             exitButton.Draw(spriteBatch);
-            spriteBatch.DrawString(spriteFont, "You Won!!", new Vector2(textPosition.X, textPosition.Y), Color.White, 0, new Vector2(0, 0), 3, SpriteEffects.None, 0);
-            spriteBatch.DrawString(spriteFont, $"You had {Information.Score} points!!", new Vector2(textPosition.X - 100, textPosition.Y + 75), Color.White, 0, new Vector2(0, 0), 3, SpriteEffects.None, 0);
+            spriteBatch.DrawString(spriteFont, "You Won!!", new Vector2(textPosition.X, textPosition.Y), Color.Black, 0, new Vector2(0, 0), 3, SpriteEffects.None, 0);
+            spriteBatch.DrawString(spriteFont, $"You had {Information.Score} points!!", new Vector2(textPosition.X - 100, textPosition.Y + 75), Color.Black, 0, new Vector2(0, 0), 3, SpriteEffects.None, 0);
         }
 
         public static void Update(GameTime gameTime) 

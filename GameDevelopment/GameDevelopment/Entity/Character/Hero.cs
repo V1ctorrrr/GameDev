@@ -105,7 +105,6 @@ namespace GameDevelopment.Entity.Character
             animations[textureCounter].Update(gameTime);
             healthBar.Update(gameTime, this);
         }
-
         public void Move() 
         {
             movementManager.Move(this);

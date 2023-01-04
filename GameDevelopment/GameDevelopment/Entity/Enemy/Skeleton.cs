@@ -24,14 +24,13 @@ namespace GameDevelopment.Entity.Enemy
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (IsAlive)
-            {
-                spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
-                healthBar.DrawHealthBar(spriteBatch);
+
+            spriteBatch.Draw(textures[textureCounter], Position, animations[textureCounter].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
+            if (!IsAlive) return;
+            healthBar.DrawHealthBar(spriteBatch);
                 //Draw Hitboxes
                 //spriteBatch.Draw(HitboxTexture, Position + HitboxPosition, Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(), 1, spriteEffect, 0f);
                 //spriteBatch.Draw(HitboxTexture, Position + HitboxPosition + SwordPosition, SwordHitbox[swordBoxCounter], Color.Black, 0f, new Vector2(0, 0), 1, spriteEffect, 1f);
-            }
         }
 
         public override void Update(GameTime gameTime)
@@ -52,7 +51,6 @@ namespace GameDevelopment.Entity.Enemy
         public override void Move(GameTime gameTime)
         {
             if (IsAttacking) return;
-            if (isTakingDamage) return;
 
             counter += gameTime.ElapsedGameTime.TotalSeconds;
             double delayBetweenStops = Information.random.NextDouble();
@@ -78,6 +76,11 @@ namespace GameDevelopment.Entity.Enemy
 
                     }
                 }
+            }
+
+            if (isTakingDamage)
+            {
+                Speed = new Vector2(0, 0);
             }
             
             if (Speed.X < 0)
@@ -149,7 +152,7 @@ namespace GameDevelopment.Entity.Enemy
 
             deathCounter += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Speed = new Vector2(0, 0);
-            if (!(deathCounter > 1.2)) return;
+            if (!(deathCounter > 1)) return;
 
             textureCounter = 4;
             animations[textureCounter].counter = 13;
@@ -184,6 +187,7 @@ namespace GameDevelopment.Entity.Enemy
                 animations[textureCounter].counter= 0;
                 time = 0;
                 IsAttacking= false;
+                textureCounter= 0;
                 if (spriteEffect==SpriteEffects.FlipHorizontally)
                 {
                     HitboxPosition = new Vector2(28,15);
@@ -192,7 +196,7 @@ namespace GameDevelopment.Entity.Enemy
                 {
                     HitboxPosition = new Vector2(1, 15);
                 }
-            }            
+            }
         }
 
         public override void LoadContent(ContentManager Content)

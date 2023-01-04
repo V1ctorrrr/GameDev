@@ -15,6 +15,7 @@ namespace GameDevelopment.Entity.Enemy
 {
     internal abstract class Enemy : IEnemy
     {
+        #region Properties
         public List<Texture2D> textures { get; set; } = new List<Texture2D>();
         internal List<Animation> animations { get; set; } = new List<Animation>();
         internal int scale = 3;
@@ -44,7 +45,7 @@ namespace GameDevelopment.Entity.Enemy
 
         internal double counter = 0;
         internal HealthBar healthBar;
-
+        #endregion
         public Enemy(Vector2 position)
         {
             Position = position;

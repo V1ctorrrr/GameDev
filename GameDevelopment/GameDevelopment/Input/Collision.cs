@@ -97,6 +97,7 @@ namespace GameDevelopment.Input
             {
                 tempSpeed *= -1;
             }
+
             if (!enemy.Hitboxes[enemy.textureCounter].Rectangle.Intersects(block.Rectangle)) return;
 
 
@@ -168,10 +169,6 @@ namespace GameDevelopment.Input
                 {
                     enemy.Attacking = false;
                 }
-            }
-            else
-            {
-                enemy.Attacking = false;
             }
 
             if (!(enemy.SwordHitbox[0].Intersects(hero.Hitboxes[hero.textureCounter].Rectangle) && enemy.IsAttacking)) return;

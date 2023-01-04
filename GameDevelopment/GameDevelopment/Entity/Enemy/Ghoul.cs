@@ -25,9 +25,9 @@ namespace GameDevelopment.Entity.Enemy
 
         public override void Draw(SpriteBatch spritebatch)
         {
-            if (!IsAlive) return;
-
             spritebatch.Draw(textures[0], Position, animations[0].CurrentFrame.SourceRectangle, Color.White, 0f, new Vector2(0, 0), scale, spriteEffect, 0f);
+            
+            if (!IsAlive) return;
             healthBar.DrawHealthBar(spritebatch);
             //Hitboxes
             //spritebatch.Draw(HitboxTexture, Position + HitboxPosition, Hitboxes[textureCounter].Rectangle, Hitboxes[textureCounter].Color, 0f, new Vector2(), 1, SpriteEffects.None, 0f);
@@ -200,7 +200,8 @@ namespace GameDevelopment.Entity.Enemy
             deathCounter += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Speed = new Vector2(0, 0);
 
-            if (!(deathCounter > 1.2)) return;
+            if (!(deathCounter > 1)) return;
+            animations[textureCounter].counter = 37;
             IsAlive = false;
             Speed = new Vector2(0, 0);
         }
